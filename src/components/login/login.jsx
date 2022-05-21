@@ -1,94 +1,124 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './login.css';
-// import {useNavigation} from 'react-router-dom';
+import AuthApi from '../../AuthApi';
+import {default as axios} from 'axios';
+import Cookies from 'js-cookie';
 
-class Login extends Component{
-    state = {
+
+const LoginPage = () => {
+    const [ state, setState] =  React.useState({
         email : "",
         password : "",
         msg : "" 
-    };
-    constructor(){
-        super();
-       
-        this.handleChangeEmail = this.handleChangeEmail.bind(this);
-        this.handleChangePassword = this.handleChangePassword.bind(this);
-        this.handleChangeMsg = this.handleChangeMsg.bind(this);
-    }
+    });
 
-    handleLoginClick = async () => {
-        // const navigate = useNavigation();
-        const login_data = {email:this.state.email ,password:this.state.password };
-		const response = await fetch('http://localhost:3000/api/user/login',
-            {
-                method: 'post',
-                body:  JSON.stringify(login_data) ,
-                headers: { 'Content-Type': 'application/json'}
-            });
-        console.log(response.status);
-        if (response.status === 200) {
-            // this.setState({msg:'logined succesfully'});
-			// const object = (await response.json());
-			// setCookie('token',object.token);
-			// setCookie('id',object.user.id);
-			// setCookie('admin',object.admin);
-			// <Navigate to="/home" />
-            window.location.href= "http://localhost:3001/";
-            // navigate("/home", { replace: true });
-            // console.log("Submitted to the system");
+    const Auth = React.useContext(AuthApi) ;
+
+
+    const handleLoginClick = () => {
+        const loginData = {email : state.email, password : state.password };
+        const url = 'http://localhost:3001/api/user/login';
+        const config={   
+            headers:{
+                'Content-Type':'application/json'
+            }
         }
-		else{
-			const error = await response.text();
-			this.setState({msg:error});
-		}
-    }
+        
+        const loginRequest = async () => {
 
-    handleRegisterClick = () =>{
+            try {
+                const body = JSON.stringify(loginData);
+                const response = await axios.post(url , body, config);
+                if (response.status === 200) {
+                    // const [auth, setAuth] = React.useState(false);
+                        
+                    Auth.setAuth(true);
+                    Cookies.set("user" , "loginTrue");
+    
+                    const newState = {
+                        ...state,
+                        msg:'logined succesfully'
+                    };
+    
+                    setState(newState);
+                    console.log("Submitted to the system");
+                  
+                }else{
+                    const error = await response.text();
+                    setState({msg : error});
+                }
+            } catch(e) {
+                console.log(e);
+            }
+        }
+
+        loginRequest();
+    }
+    
+
+    const handleRegisterClick = () =>{
         console.log("Going to reggister in the system");
     }
 
-    handleChangeEmail = event =>{
+    const handleChangeEmail = event =>{
         const value = event.target.value;
-        this.setState({ email : value });
+        const newState = {
+            ...state,
+            email:value};
+
+        setState(newState);
+        
     }
 
-    handleChangePassword = event => {
+    const handleChangePassword = event => {
         const value = event.target.value;
-        this.setState({ password : value });
+        const newState = {
+            ...state,
+            password:value};
+
+        setState(newState);
+    
     }
 
-    handleChangeMsg = event => {
+    const handleChangeMsg = event => {
         const value = event.target.value;
-        this.setState({ password : value });
+        
+        const newState = {
+            ...state,
+            msg:value};
+
+        setState(newState);
     }
 
-    render() { 
-        return(
-            <div id= 'box'>
-                {/* <h1>Restaurant Managment System</h1>
-                <hr></hr> */}
+
+
+    return (
+        <div id= 'box'>
                 <div className="login_component">
                     <h2 className="headers"><b>Login - Page</b> </h2>
                     <hr></hr>
                     <div>
                         <div className ="element">
-                            <input value = {this.state.email} onChange={this.handleChangeEmail} placeholder='Email'></input>
+                            <input value={state.email} onChange={handleChangeEmail} placeholder='Email'></input>
                         </div>
                         <div className ="element">
-                            <input value ={this.state.password} onChange={this.handleChangePassword} placeholder='Password'></input>
+                            <input value={state.password} onChange={(e) => handleChangePassword(e)} placeholder='Password'></input>
+                        </div>
+                        <div className ="element">
+                            <span onChange={(e) => handleChangeMsg(e)} placeholder='msg'>{state.msg}</span>
                         </div>
                     </div>
                     <br/>
                     <div>
-                        <button className ="buttons" onClick={this.handleLoginClick}><b>Log-in</b></button>
+                        <button className ="buttons" onClick={handleLoginClick}><b>Log-in</b></button>
                     </div>
                     <hr></hr>
                     <div>
-                        <button className ="buttons" onClick={this.handleRegisterClick}><b>Register</b></button>
+                        <button className ="buttons" onClick={handleRegisterClick}><b>Register</b></button>
                     </div>                
                 </div>
-            </div>)
-    }
-}
- 
-export default Login;
+            </div>
+    );
+};
+
+export default LoginPage;
