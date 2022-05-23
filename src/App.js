@@ -2,7 +2,7 @@ import './App.css';
 import LoginPage from './components/login/login';
 import HomePage from './components/home/home';
 import AuthApi from './AuthApi';
-import { BrowserRouter as Router ,Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router ,Route, Routes, Switch , Navigate , Redirect } from 'react-router-dom';
 import React from 'react';
 import Cookies from 'js-cookie';
 
@@ -10,15 +10,12 @@ function App() {
   const [auth, setAuth] = React.useState(false) 
   const readCookie = () => {
     const user = Cookies.get("user");
-    console.log(user);
     if(user){
       setAuth(true);
-      console.log(auth);
     }
   }
   React.useEffect( () =>{
     readCookie();
-    console.log(auth); 
   }, [auth]);
 
   return(
@@ -36,43 +33,42 @@ function App() {
 const UpRoutes= () => {
   const Auth = React.useContext(AuthApi);
     return (
-      <Routes>
-          <ProtectedLogin  path="/login" component={LoginPage} auth={Auth.auth}/>
-          <ProtectedRoute exect path="/" auth={Auth.auth} component={HomePage} />
-      </Routes>
+      <>
+      <Switch>
+        <ProtectedLogin auth={Auth.auth} path="/login" component={LoginPage}/>
+      </Switch>
+      <Switch>
+        <ProtectedRoute exect path="/"  component={HomePage} auth={Auth.auth} />
+      </Switch>
+      </>
     )
 }
 
 const ProtectedRoute = ({auth , component : Component , ...rest}) => {
   return( 
-    <Route 
-    // {...rest}
-    // render = {() => auth? (
-    //    <Component/>
-    // ) : ( 
-    //   <Redirect to="/login"/>
-    // )}
-    path='/'
-    element={auth ?  <Navigate to='/'/> : <Navigate to='/login'/> } 
+    <Route
+    {...rest}
+    render = {() => auth ? (
+       <Component/>
+    ) : ( 
+      <Redirect to="/login"/>
+    )}
     />
   );
 };
 
 const ProtectedLogin = ({auth , component : Component , ...rest}) => {
   return(
-  //   <Route 
-  //   {...rest}
-  //   render = {() => !auth? (
-  //     <Component/>
-  //   ) : (
-  //     <Redirect to="/"/>
-  //   )}
-  //   ></Route>
-  // );
-  <Route
-  path='/login'
-  element={auth ?  <Navigate to='/'/> : <Navigate to='/login'/> } 
-  />)
+    <Route 
+    
+    {...rest}
+    render = {() => !auth? (
+      <Component/>
+    ) : (
+      <Redirect to="/"/>
+    )}
+    />
+  );
 };
 
 export default App;

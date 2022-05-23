@@ -1,6 +1,5 @@
 import React from 'react';
 import {default as axios} from 'axios';
-import history from '../../history.js' ;
 import Cookies from 'js-cookie';
 import AuthApi from '../../AuthApi.js';
  
@@ -13,15 +12,17 @@ const HomePage = () => {
     const Auth = React.useContext(AuthApi);
 
     const chooseEreaClick = event => {
+        console.log("Here");
         const value = event.target.value;
+        console.log(value);
         const newState = {
             ...state,
             erea : value};
 
         setState(newState); 
-
+        console.log(newState);
         const ereaType = { erea : state.erea };
-        const url = 'http://localhost:3001/api/tables/erea' ;
+        const url = 'http://localhost:3001/api/tables/get/' + 2 ;
         // const config={   
         //     headers:{
         //         'Content-Type':'application/json'
@@ -29,20 +30,20 @@ const HomePage = () => {
         // }
 
         const ereaTables = async () => {
-            const body = JSON.stringify(ereaType);
-            const response = await axios.get(url , body);
+            const response = await axios.get(url);
+            console.log(response.data);
+        //     let botton = document.createElement("botton").value(response.data.num_seats);
+        //     document.getElementById('tables-bottons').appendChild(botton);
         }
-
         ereaTables();
     }
-
+    
     const logoutHandleClick = ()=> {
       
-        window.localStorage.setItem("auth","false");
+        Auth.setAuth(false);
         Cookies.remove("user");
-    }
 
-    console.log("Here");
+    }
     
     return(
         <div>
@@ -62,7 +63,7 @@ const HomePage = () => {
                     <option value="4">Terrace</option>
                 </select>
             </div>
-            <div>
+            <div id='tables-bottons'>
 
             </div>
         </div>  
