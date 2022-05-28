@@ -3,7 +3,7 @@ import {default as axios} from 'axios';
 // import Cookies from 'js-cookie';
 // import AuthApi from '../../AuthApi.js';
 
-const Table = () => {
+const TablePage = () => {
 
     const [state , setState] = React.useState({
         numTable :"",
@@ -112,3 +112,5 @@ const ButtomComponent = () =>{
         </div>  
     );
 }
+
+export default TablePage;

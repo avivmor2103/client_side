@@ -1,10 +1,12 @@
+import AuthApi from '../../AuthApi.js';
+import './home.css';
 import React from 'react';
 import {default as axios} from 'axios';
 import Cookies from 'js-cookie';
-import AuthApi from '../../AuthApi.js';
 
 
-const TableButton = () =>{
+
+const TableButton = (props) =>{
     
     const [state , setState] = React.useState({
         numTable :"",
@@ -15,7 +17,7 @@ const TableButton = () =>{
 
     return(
         <div>
-            <button onClick={handleTableClick}>Table #{state.numTable}</button>
+            <button onClick={handleTableClick}>Table #{props.table.num_table}</button>
         </div>
     );
 }
@@ -25,17 +27,19 @@ const HomePage = () => {
     const [state , setState] = React.useState({
         table :"",
         erea : "" ,
+        tablesArray : []
     });
     const Auth = React.useContext(AuthApi);
 
     const chooseEreaClick = event => {
         const value = event.target.value;
-        const parent = document.getElementById('tables-bottons');
+
+        // const parent = document.getElementById('tables-bottons');
         
-        removeAllChildNodes(parent);
+        // removeAllChildNodes(parent);
         const newState = {
             ...state,
-            erea : value
+            erea : value, tablesArray : []
         };
 
         setState(newState);
@@ -52,15 +56,21 @@ const HomePage = () => {
         const ereaTables = async () => {
             try{
                 const response = await axios.get(url , config);
-                console.log(response.data);
-                response.data.forEach( t =>{
-                    let btn = document.createElement("button");
-                    btn.innerHTML = `Table #${response.data[0].num_table}`;
-                    btn.addEventListener('click', ()=> {
-                         
-                    });
-                    document.getElementById('tables-bottons').appendChild(btn);
-                });
+                // console.log(response.data);
+                // response.data.forEach( t =>{
+                //     let btn = document.createElement("button");
+                //     btn.innerHTML = `Table #${t.num_table}`;
+                //     btn.addEventListener('click', ()=> {
+                        
+                //     });
+                //     document.getElementById('tables-bottons').appendChild(btn);
+                //     btn.setAttribute('className', 'btn-tables' )
+                //});
+                const newState = {
+                    ...state,
+                    tablesArray :  response.data 
+                };
+                setState(newState);
                 //response.data.map((table) => <TableButton numTable={table.num_table}/>);
             }catch(e){
                 console.log(e);
@@ -118,27 +128,31 @@ const HomePage = () => {
     }
     
     return(
-        <div>
-            <div className="home-header">
-                <h2>Tabit-App</h2>
-            </div>
-            <div>
-                <button onClick={logoutHandleClick}>Log-out</button>
+        <div className='home-component'>
+            <div className='top-component' >
+                <div className="home-header">
+                    <h2>Tabit-App</h2>
+                </div>
+                <div>
+                    <button onClick={logoutHandleClick}>Log-out</button>
+                </div>
             </div>
             <hr/>
             <div>
                 <h3>Select Erea</h3>
                 <select onClick={chooseEreaClick}>
                     <option value=""></option>
-                    <option value="1">Bar</option>
-                    <option value="2">Floor</option>
+                    <option value="1">Floor</option>
+                    <option value="2">Bar</option>
                     <option value="3">Garden</option>
                     <option value="4">Terrace</option>
                 </select>
             </div>
             <hr/>
             <div id='tables-bottons'>
-
+                {state.tablesArray.map((tableNumber, index) => {
+                    return <TableButton table = {tableNumber} key={index}/>
+                })}
             </div>
         </div>  
     );

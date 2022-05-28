@@ -5,6 +5,7 @@ import AuthApi from './AuthApi';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import Cookies from 'js-cookie';
+import TablePage from './components/table/table';
 
 function App() {
   const [auth, setAuth] = React.useState(false) 
@@ -40,6 +41,7 @@ const UpRoutes= () => {
         <Switch>
           <ProtectedRoute exect path="/"  component={HomePage} auth={Auth.auth} />
         </Switch>
+          <Route path="/table" component={TablePage}/>
       </>
     )
 }

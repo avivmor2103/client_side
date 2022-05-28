@@ -1,5 +1,13 @@
 #home_header {
     text-align: center;
-    display: flex;
+    display: inherit;
     justify-content: center;
+}
+#btn-tables {
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: red;
+}
+#top-component{
+    display: inline-block;
 }
