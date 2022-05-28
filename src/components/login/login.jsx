@@ -31,9 +31,9 @@ const LoginPage = () => {
                 const response = await axios.post(url , body, config);
                 if (response.status === 200) {
                     // const [auth, setAuth] = React.useState(false);
-                        
+                    //console.log(Auth.auth);
                     Auth.setAuth(true);
-                    Cookies.set("user" , "loginTrue");
+                    Cookies.set("user" , state.email );
     
                     const newState = {
                         ...state,

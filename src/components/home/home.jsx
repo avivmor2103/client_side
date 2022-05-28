@@ -2,7 +2,24 @@ import React from 'react';
 import {default as axios} from 'axios';
 import Cookies from 'js-cookie';
 import AuthApi from '../../AuthApi.js';
- 
+
+
+const TableButton = () =>{
+    
+    const [state , setState] = React.useState({
+        numTable :"",
+    });
+    const handleTableClick = (event) => {
+
+    }
+
+    return(
+        <div>
+            <button onClick={handleTableClick}>Table #{state.numTable}</button>
+        </div>
+    );
+}
+
 const HomePage = () => {
 
     const [state , setState] = React.useState({
@@ -12,37 +29,92 @@ const HomePage = () => {
     const Auth = React.useContext(AuthApi);
 
     const chooseEreaClick = event => {
-        console.log("Here");
         const value = event.target.value;
-        console.log(value);
+        const parent = document.getElementById('tables-bottons');
+        
+        removeAllChildNodes(parent);
         const newState = {
             ...state,
-            erea : value};
+            erea : value
+        };
 
-        setState(newState); 
-        console.log(newState);
-        const ereaType = { erea : state.erea };
-        const url = 'http://localhost:3001/api/tables/get/' + 2 ;
-        // const config={   
-        //     headers:{
-        //         'Content-Type':'application/json'
-        //     }
-        // }
+        setState(newState);
+        const ereaType = { erea : newState.erea };
+        console.log(ereaType);
+        const url = 'http://localhost:3001/api/tables/erea/' + ereaType.erea ;
+        console.log(url);
+        const config={   
+            headers:{
+                'Content-Type':'application/json'
+            }
+        }
 
         const ereaTables = async () => {
-            const response = await axios.get(url);
-            console.log(response.data);
-        //     let botton = document.createElement("botton").value(response.data.num_seats);
-        //     document.getElementById('tables-bottons').appendChild(botton);
-        }
+            try{
+                const response = await axios.get(url , config);
+                console.log(response.data);
+                response.data.forEach( t =>{
+                    let btn = document.createElement("button");
+                    btn.innerHTML = `Table #${response.data[0].num_table}`;
+                    btn.addEventListener('click', ()=> {
+                         
+                    });
+                    document.getElementById('tables-bottons').appendChild(btn);
+                });
+                //response.data.map((table) => <TableButton numTable={table.num_table}/>);
+            }catch(e){
+                console.log(e);
+            }
+        }  
         ereaTables();
+    }
+
+    
+    const removeAllChildNodes = (parent) => {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
     }
     
     const logoutHandleClick = ()=> {
-      
-        Auth.setAuth(false);
-        Cookies.remove("user");
+        const userEmail = Cookies.get("user");
+        //console.log(userEmail) ;
 
+        const requestBody = {email : userEmail};
+        const url = 'http://localhost:3001/api/user/logout';
+        const config={   
+            headers:{
+                'Content-Type':'application/json'
+            }
+        }
+
+        
+        const logoutRequest = async () => {
+
+            try {
+                const body = JSON.stringify(requestBody);
+                const response = await axios.post( url, body , config );
+                if (response.status === 200) {
+                    Auth.setAuth(false);
+                    Cookies.remove("user");
+    
+                    const newState = {
+                        ...state,
+                        msg:'Loged-out succesfully'
+                    };
+    
+                    setState(newState);
+                    console.log("Disconnected from the system");
+                  
+                }else{
+                    const error = await response.text();
+                    setState({msg : error});
+                }
+            } catch(e) {
+                console.log(e);
+            }
+        }
+        logoutRequest();
     }
     
     return(
@@ -53,6 +125,7 @@ const HomePage = () => {
             <div>
                 <button onClick={logoutHandleClick}>Log-out</button>
             </div>
+            <hr/>
             <div>
                 <h3>Select Erea</h3>
                 <select onClick={chooseEreaClick}>
@@ -63,6 +136,7 @@ const HomePage = () => {
                     <option value="4">Terrace</option>
                 </select>
             </div>
+            <hr/>
             <div id='tables-bottons'>
 
             </div>
