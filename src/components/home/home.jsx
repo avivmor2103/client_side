@@ -3,21 +3,28 @@ import './home.css';
 import React from 'react';
 import {default as axios} from 'axios';
 import Cookies from 'js-cookie';
+import TablePage from '../table/table.jsx';
 
 
 
 const TableButton = (props) =>{
     
     const [state , setState] = React.useState({
-        numTable :"",
+        numTable : props.table.num_table,
     });
     const handleTableClick = (event) => {
+        const newState = {
+            ...state,
+            showComponent : true
+        };
 
+        setState(newState);
+       
     }
 
     return(
         <div>
-            <button onClick={handleTableClick}>Table #{props.table.num_table}</button>
+            <button onClick={handleTableClick}>Table #{state.numTable}</button>
         </div>
     );
 }
@@ -27,13 +34,15 @@ const HomePage = () => {
     const [state , setState] = React.useState({
         table :"",
         erea : "" ,
-        tablesArray : []
+        tablesArray : [],
+        showComponent : false
     });
     const Auth = React.useContext(AuthApi);
 
     const chooseEreaClick = event => {
         const value = event.target.value;
-
+        if(value === '0')
+            return;
         // const parent = document.getElementById('tables-bottons');
         
         // removeAllChildNodes(parent);
@@ -141,7 +150,7 @@ const HomePage = () => {
             <div>
                 <h3>Select Erea</h3>
                 <select onClick={chooseEreaClick}>
-                    <option value=""></option>
+                    <option value="0"></option>
                     <option value="1">Floor</option>
                     <option value="2">Bar</option>
                     <option value="3">Garden</option>
@@ -149,12 +158,12 @@ const HomePage = () => {
                 </select>
             </div>
             <hr/>
-            <div id='tables-bottons'>
+            <div id='bottons-container'>
                 {state.tablesArray.map((tableNumber, index) => {
                     return <TableButton table = {tableNumber} key={index}/>
                 })}
             </div>
-        </div>  
+        </div>
     );
 };
 
