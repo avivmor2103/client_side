@@ -3,39 +3,15 @@ import './home.css';
 import React from 'react';
 import {default as axios} from 'axios';
 import Cookies from 'js-cookie';
-import TablePage from '../table/table.jsx';
+import TableButton from './TableButton';
 
-
-
-const TableButton = (props) =>{
-    
-    const [state , setState] = React.useState({
-        numTable : props.table.num_table,
-    });
-    const handleTableClick = (event) => {
-        const newState = {
-            ...state,
-            showComponent : true
-        };
-
-        setState(newState);
-       
-    }
-
-    return(
-        <div>
-            <button onClick={handleTableClick}>Table #{state.numTable}</button>
-        </div>
-    );
-}
-
-const HomePage = () => {
+const RestaurantPage = (props) => {
 
     const [state , setState] = React.useState({
         table :"",
         erea : "" ,
         tablesArray : [],
-        showComponent : false
+        tableDate : false
     });
     const Auth = React.useContext(AuthApi);
 
@@ -53,9 +29,9 @@ const HomePage = () => {
 
         setState(newState);
         const ereaType = { erea : newState.erea };
-        console.log(ereaType);
+        //console.log(ereaType);
         const url = 'http://localhost:3001/api/tables/erea/' + ereaType.erea ;
-        console.log(url);
+        //console.log(url);
         const config={   
             headers:{
                 'Content-Type':'application/json'
@@ -65,16 +41,6 @@ const HomePage = () => {
         const ereaTables = async () => {
             try{
                 const response = await axios.get(url , config);
-                // console.log(response.data);
-                // response.data.forEach( t =>{
-                //     let btn = document.createElement("button");
-                //     btn.innerHTML = `Table #${t.num_table}`;
-                //     btn.addEventListener('click', ()=> {
-                        
-                //     });
-                //     document.getElementById('tables-bottons').appendChild(btn);
-                //     btn.setAttribute('className', 'btn-tables' )
-                //});
                 const newState = {
                     ...state,
                     tablesArray :  response.data 
@@ -135,15 +101,20 @@ const HomePage = () => {
         }
         logoutRequest();
     }
+
+    const handlerTableClicked = (numTable) => {
+        console.log(numTable);
+        props.onSwitchTable(numTable);
+    }
     
     return(
         <div className='home-component'>
+           
             <div className='top-component' >
                 <div className="home-header">
                     <h2>Tabit-App</h2>
                 </div>
-                <div>
-                    <button onClick={logoutHandleClick}>Log-out</button>
+                <div>   <button onClick={logoutHandleClick}>Log-out</button>
                 </div>
             </div>
             <hr/>
@@ -160,11 +131,11 @@ const HomePage = () => {
             <hr/>
             <div id='bottons-container'>
                 {state.tablesArray.map((tableNumber, index) => {
-                    return <TableButton table = {tableNumber} key={index}/>
+                    return <TableButton table = {tableNumber} key={index} onClickTable={handlerTableClicked} />
                 })}
             </div>
         </div>
     );
 };
 
-export default HomePage ;
+export default RestaurantPage ;

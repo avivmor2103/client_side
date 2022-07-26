@@ -5,7 +5,7 @@ import {default as axios} from 'axios';
 import Cookies from 'js-cookie';
 
 
-const LoginPage = () => {
+const LoginPage = (props) => {
     const [ state, setState] =  React.useState({
         email : "",
         password : "",
@@ -102,7 +102,7 @@ const LoginPage = () => {
                             <input value={state.email} onChange={handleChangeEmail} placeholder='Email'></input>
                         </div>
                         <div className ="element">
-                            <input value={state.password} onChange={(e) => handleChangePassword(e)} placeholder='Password'></input>
+                            <input value={state.password} type='password' onChange={(e) => handleChangePassword(e)} placeholder='Password'></input>
                         </div>
                         <div className ="element">
                             <span onChange={(e) => handleChangeMsg(e)} placeholder='msg'>{state.msg}</span>
