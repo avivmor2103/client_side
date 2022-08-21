@@ -1,0 +1,50 @@
+.new-field-container{
+    background-color: #a892ee;
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.new-field-container {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #40005d;
+    background-color: #40005d;
+    color: white;
+    border-radius: 12px;
+
+}
+
+.new-field-container button:hover,
+.new-field-container button:active {
+    background-color: #510674;
+    border-color: #510674;
+}
+
+.new-field-container button.alternative {
+    color: #220131;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.new-field-container button.alternative:hover,
+.new-field-container button.alternative:active {
+    background-color: #ddb3f8;
+}
+
+.new-field-container .field-element-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.field-element-container button{
+    margin-left: auto;
+    padding: 5px;
+}

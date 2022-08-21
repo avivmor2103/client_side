@@ -10,44 +10,20 @@ const ButtomComponent = (props) =>{
     });
 
 
-    const onClickHomeHandler= (props)=>{
-        
+    const onClickSendItems = ()=>{
+        props.onSendClick();
+    }
+
+    const onClickCheckTable = ()=>{
+        props.onCheckClick ();
     }
 
     return(
-        <div className="divs down-labls">
-            <div>
-                <h4><b>Table Detailes : {state.numTable}</b></h4>
-                <div>
-                    <label>                    
-                        <b>
-                        Number Diners: {state.numDiners}
-                        </b>
-                    </label>
-                        <br/>
-                    <label>
-                        <b>
-                        Number Seats : {state.numSeats}
-                        </b>
-                    </label>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <label>Order</label>
-                </div>
-                <div>
-                    <label>Dishes</label>
-                </div>
-            </div>
-            <div>
-                <label>
-                    <b>
-                        Total Check :
-                    </b>
-                </label>
-                <button onClick={props.onReturn}>HOME</button>
-            </div>
+        <div className="bottom-div-container">
+                <div className="total-amout-container">Total Check : {props.total}</div>
+                <button onClick={onClickSendItems}> Send </button> 
+                <button onClick={onClickCheckTable}> Check </button>
+
         </div>  
     );
 }

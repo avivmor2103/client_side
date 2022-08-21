@@ -1,0 +1,81 @@
+.restaurantPage-component {
+    text-align: center;
+}
+.main-container .section-title {
+    font-weight: 900;
+    color:#2B4865;
+    padding: 10px;
+    width: 100%;
+    letter-spacing: 0.24px;
+    line-height: 1.5;
+    position: relative;
+}
+
+.section-title::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px black solid;
+}
+
+
+.main-container .select-section{
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    outline:0px;
+    cursor: pointer;
+}
+
+.button-section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.button-section .table-title {
+    font-size: 16px;
+    font-weight: 700;
+    color:#2B4865;
+    letter-spacing: 0.24px;
+    line-height: 15.85px;
+    margin-bottom: 10px;
+}
+
+.btn-tables {
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: red;
+    display: inline-block;
+    gap : 10px ;
+}
+.bottons-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3px;
+}
+
+button {
+    border-radius: 8px;
+    margin-left: 10px;
+    padding: 20px;
+    border: none;
+    background-color: #AFB4FF;
+}
+button:hover{
+    background-color: #A66CFF;
+    cursor: pointer;
+}
+
+
+.top-component{
+    width: 100%;
+}

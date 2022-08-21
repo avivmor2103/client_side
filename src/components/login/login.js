@@ -1,6 +1,6 @@
 import React from 'react';
 import './login.css';
-import AuthApi from '../../AuthApi';
+import AuthApi from '../../store/AuthApi';
 import {default as axios} from 'axios';
 import Cookies from 'js-cookie';
 
@@ -54,11 +54,6 @@ const LoginPage = (props) => {
 
         loginRequest();
     }
-    
-
-    const handleRegisterClick = () =>{
-        console.log("Going to reggister in the system");
-    }
 
     const handleChangeEmail = event =>{
         const value = event.target.value;
@@ -92,32 +87,61 @@ const LoginPage = (props) => {
 
 
 
-    return (
-        <div id= 'box'>
-                <div className="login_component">
-                    <h2 className="headers"><b>Login - Page</b> </h2>
-                    <hr></hr>
-                    <div>
-                        <div className ="element">
-                            <input value={state.email} onChange={handleChangeEmail} placeholder='Email'></input>
-                        </div>
-                        <div className ="element">
-                            <input value={state.password} type='password' onChange={(e) => handleChangePassword(e)} placeholder='Password'></input>
-                        </div>
-                        <div className ="element">
-                            <span onChange={(e) => handleChangeMsg(e)} placeholder='msg'>{state.msg}</span>
-                        </div>
+    // return (
+    //     <div id= 'box'>
+    //             <div className="login_component">
+    //                 <h2 className="headers"><b>Login - Page</b> </h2>
+    //                 <hr></hr>
+    //                 <div>
+    //                     <div className ="element">
+    //                         <input value={state.email} onChange={handleChangeEmail} placeholder='Email'></input>
+    //                     </div>
+    //                     <div className ="element">
+    //                         <input value={state.password} type='password' onChange={(e) => handleChangePassword(e)} placeholder='Password'></input>
+    //                     </div>
+    //                     <div className ="element">
+    //                         <span onChange={(e) => handleChangeMsg(e)} placeholder='msg'>{state.msg}</span>
+    //                     </div>
+    //                 </div>
+    //                 <br/>
+    //                 <div>
+    //                     <button className ="buttons" onClick={handleLoginClick}><b>Log-in</b></button>
+    //                 </div>
+    //                 <hr></hr>
+    //                 <div>
+    //                     <button className ="buttons" onClick={handleRegisterClick}><b>Register</b></button>
+    //                 </div>                
+    //             </div>
+    //         </div>
+    // );
+    return(
+        <div id="box">
+            <div className="login_component">
+                <div className="title">Login</div>
+                <div className="element-container">
+                    <input 
+                        className="email-element"
+                        value={state.email} 
+                        onChange={handleChangeEmail} 
+                        placeholder='Email'>
+                    </input>
+                    <input
+                        className="password-element"
+                        value={state.password} 
+                        type="password" 
+                        onChange={(e) => handleChangePassword(e)} 
+                        placeholder='Password'>
+                    </input>
+                    <div className="msg-container">
+                        <span onChange={(e) => handleChangeMsg(e)} placeholder='msg'>{state.msg}</span>
                     </div>
-                    <br/>
-                    <div>
-                        <button className ="buttons" onClick={handleLoginClick}><b>Log-in</b></button>
-                    </div>
-                    <hr></hr>
-                    <div>
-                        <button className ="buttons" onClick={handleRegisterClick}><b>Register</b></button>
-                    </div>                
+                </div>
+                <div className="buttons-container">
+                <button className="login-button" onClick={handleLoginClick}>Log-in</button>
+                <button className="register-button" onClick={props.onClickToRegistrationPage}>Register</button>
                 </div>
             </div>
+        </div>
     );
 };
 

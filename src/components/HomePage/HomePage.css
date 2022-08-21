@@ -1,0 +1,34 @@
+.link-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 50px;
+    margin-top: 0%;
+    color: rgb(65, 153, 224);
+    font-weight: 900;
+}
+
+.homw-page-container{
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.any-page-link-container{
+    outline: auto;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-home-container h2{
+    font-weight: 900;
+
+}
+

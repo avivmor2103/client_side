@@ -1,0 +1,38 @@
+.cancel-item_controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+.cancel-item_control label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+.cancel-item_control input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 20rem;
+    max-width: 100%;
+  }
+  
+.cancel-item_actions {
+    text-align: right;
+}
+
+.select-section{
+  font-weight: 900;
+}
+.selection-option{
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.top-div-container{
+  gap: 10px;
+}

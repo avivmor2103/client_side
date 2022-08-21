@@ -1,0 +1,12 @@
+.maneger-page-container{
+    gap: 1px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.maneger-page-container .title-page-container{
+    font-weight: 900;
+    font-size: x-large;
+}

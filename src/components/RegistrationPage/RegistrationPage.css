@@ -1,0 +1,108 @@
+#box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 150px;
+  }
+#box .registration_component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 600px;
+    height: 600px;
+    border-radius: 20px;
+    background-color: #cdf0ea;
+    padding: 10px;
+}
+* {
+    box-sizing: border-box;
+}
+  
+.title {
+    font-weight: 900;
+    font-size: 21px;
+    color: #937dc2;
+}
+
+.two-element{
+    display: inline;
+}
+  
+.email-element,
+.name-element,
+.last-element,
+.id-element,
+.address-element,
+.phone-element,
+.date-element,
+.password-element,
+.position-element,
+.status-element {
+    padding: 10px;
+    border-radius: 20px;
+    width: 100%;
+    border: 1px solid #f9f9f9;
+ }
+  
+.email-element:focus,
+.name-element:focus,
+.last-element:focus,
+.id-element:focus,
+.address-element:focus,
+.phone-element:focus,
+.date-element:focus,
+.password-element:focus,
+.position-element:focus,
+.status-element:focus  {
+    outline: none;
+}
+
+.div-row{
+    display: flex;
+    gap : 5px;
+}
+  
+.element-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.register-button {
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+    background-color: #f6c6ea;
+    border: 1px solid #f6c6ea;
+    border-radius: 20px;
+}
+  
+.register-button:hover {
+    background-color: #faa5e5;
+    border: 1px solid #faa5e5;
+}
+  
+.back-button {
+    padding: 5px;
+    color: #fd2ec9;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #f6c6ea;
+    border-radius: 20px;
+}
+  
+.back-button:hover {
+    background-color: #fd2ec9;
+    color: white;
+    border: 1px solid #fd2ec9;
+}
+  

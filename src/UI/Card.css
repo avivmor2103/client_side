@@ -1,0 +1,28 @@
+.card {
+    background: rgb(184, 149, 214);
+    box-shadow: 0 2px 8px rgba(122, 20, 224, 0.26);
+    border-radius: 8px;
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: row;
+    width: 75%;
+}
+
+.card .x-cancle-btn :hover{
+    padding: 3px ;
+    background-color: red;
+    cursor: pointer;
+}
+
+.card .x-button-container .x-cancle-btn{
+    padding: 2px;
+    width: 15px;
+    outline: none;
+}
+
+.card .x-button-container{
+    display: flex;
+    align-items: left;
+}
