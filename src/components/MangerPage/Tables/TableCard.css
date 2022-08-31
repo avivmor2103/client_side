@@ -1,0 +1,30 @@
+.card {
+    
+    outline-width: 1px;
+    outline-color: white;
+    outline-style: solid;
+    border-radius: 5px;
+    color: white;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 1 0 11%; /* explanation below */
+    margin: 5px;
+    height: 30px;
+    width: 100px;
+}
+
+.card:hover{
+    outline-width: 3px;
+    outline-color: white;
+    outline-style: solid;
+}
+
+.card button{
+    padding: 3px;
+}
+
+.card button:hover{
+  color: red;
+}

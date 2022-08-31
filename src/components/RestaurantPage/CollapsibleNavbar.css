@@ -13,7 +13,7 @@
     z-index: 1;
     gap: 4px;
 }
-.navigation .navbar-option{
+.navigation{
   padding: 5px 8px;
   cursor: pointer;
 }
@@ -34,6 +34,10 @@
     font-size: 22px;
     word-spacing: 0.24px;
     margin-left: auto; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-link {
@@ -43,13 +47,51 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-  }
+}
   
-  .nav-link:hover, .active:hover {
-    color: #fff;
-  }
+.nav-link:hover, .active:hover {
+  color: #fff;
+}
+
+.active {
+  color: #0E1333;
   
-  .active {
-    color: #0E1333;
-    
-  }
+}
+
+.link-icon-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0%;
+  gap: 0px;
+}
+
+.attendance-link{
+  padding-right: 27px;
+}
+
+.profile-link{
+  padding-right: 60px;
+}
+
+.manager-link{
+  padding-right: 45px;
+}
+
+.rest-link{
+  padding-right: 30px;
+}
+
+.navbar-option{
+  padding-right: 55px;
+  margin-left: 10px;
+}
+
+.logout-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap:5px;
+}

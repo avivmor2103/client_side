@@ -10,11 +10,17 @@ const ManegerPage = (props) => {
     return (
         <div className="maneger-page-container">
             <div className="title-page-container">Manger-page</div>
-            <NewTable/>
-            <RemoveTable/>
-            <NewItem/>
-            <RemoveItem/>
-            <RemoveUser/>
+            <div className="type-actions-container">
+                <NewTable/>
+                <RemoveTable/>
+            </div>
+            <div className="type-actions-container">
+                <NewItem/>
+                <RemoveItem/>
+            </div>
+            <div className="type-actions-container">
+                <RemoveUser/>
+            </div>
         </div>
     );
 }

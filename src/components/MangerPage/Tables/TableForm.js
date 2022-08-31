@@ -53,28 +53,33 @@ const TableForm = (props) => {
     return (
         <form onSubmit={submitHandler}>
             <div className='new-table_controls'>
-                <div className='new-table_control'>
-                    <label>Table Number</label>
-                    <input type='text' value={enteredTable} onChange={TableChangeHandler}/>
+                <div className='title-conatainer'>
+                    Add New Table
                 </div>
-                <div className='new-table_control'>
-                    <label>Seats Number</label>
-                    <input type='text' value={enteredSeats} min="1" max="10" onChange={seatsChangeHandler}/>
-                </div>
-                <div className='new-table_control'>
-                    <label>Erea</label>
-                    <select onClick={onChooseEreaClick} className='new-table-select'>
-                        <option className='new-table-option' value='0'>Select</option>
-                        <option className='new-table-option' value='1'>Indise</option>
-                        <option className='new-table-option' value='2'>Bar</option>
-                        <option className='new-table-option' value='3'>Balcony</option>
-                        <option className='new-table-option' value='4'>Yard</option>
-                    </select>
+                <div className='new-table_controls'>
+                    <div className='new-table_control'>
+                        <label>Table Number</label>
+                        <input type='text' value={enteredTable} onChange={TableChangeHandler}/>
+                    </div>
+                    <div className='new-table_control'>
+                        <label>Seats Number</label>
+                        <input type='text' value={enteredSeats} min="1" max="10" onChange={seatsChangeHandler}/>
+                    </div> 
+                    <div className='new-table_control'>
+                        <label>Erea</label>
+                        <select onClick={onChooseEreaClick} className='new-table-select'>
+                            <option className='new-table-option' value='0'>Select</option>
+                            <option className='new-table-option' value='1'>Indise</option>
+                            <option className='new-table-option' value='2'>Bar</option>
+                            <option className='new-table-option' value='3'>Balcony</option>
+                            <option className='new-table-option' value='4'>Yard</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div className='new-table_actions'>
                 <button type = "button" onClick={props.onCancelClick}>Cancel</button>
-                <button type= "submit">Add New Table</button>
+                <button type= "submit">Add</button>
             </div>
         </form>
     );

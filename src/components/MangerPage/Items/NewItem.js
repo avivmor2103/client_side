@@ -15,7 +15,7 @@ const NewItem = (props) => {
 
     return (
         <div className='new-item-container'>
-            {!isEditing && <button onClick={startEditingClickHandler}>Add New Item</button>}
+            {!isEditing && <button className="btn" onClick={startEditingClickHandler}>Add New Item</button>}
             {isEditing && <ItemForm onCancelClick={onCancelClickHandler}/>} 
         </div>
     )

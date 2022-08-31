@@ -1,9 +1,8 @@
 .new-table-container{
-    background-color: #a892ee;
     padding: 1rem;
     margin: 2rem auto;
     width: 50rem;
-    max-width: 100%;
+    max-width: 95%;
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
@@ -12,17 +11,22 @@
   .new-table-container{
     font: inherit;
     cursor: pointer;
-    padding: 1rem 2rem;
-    border: 1px solid #40005d;
-    background-color: #40005d;
+    border: 1px solid rgb(16, 16, 104);
+    background-color: rgb(16, 16, 104);
     color: white;
     border-radius: 12px;
   }
   
   .new-table-container button:hover,
   .new-table-container button:active {
-    background-color: #510674;
+    background-color: #90E0EF;
     border-color: #510674;
+    color: black;
+  }
+
+  .new-table-container button{
+    padding: 15px;
+    font-weight: 100;
   }
   
   .new-table-container button.alternative {

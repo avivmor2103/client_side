@@ -49,9 +49,10 @@ const ItemForm = (props) => {
 
         const addNewItem = async () =>{ 
             try{
+                console.log(itemDataBody);
                 const response = await axios.post(url ,itemDataBody);
                 if(response.status === 201){
-                    console(`Item - ${enteredName} - added successfully`);
+                    console.log(`Item - ${enteredName} - added successfully`);
                 }else{
                     console.log('Error');
                 }
@@ -67,7 +68,6 @@ const ItemForm = (props) => {
         setCategory('');
         setQuantity('');
     };
-   
 
     return (
         <form onSubmit={submitHandler}>
@@ -78,7 +78,16 @@ const ItemForm = (props) => {
                 </div>
                 <div className='new-item_control'>
                     <label>Category</label>
-                    <input type='text' value={enteredCategory} min="1" max="4" onChange={categoryChangeHandler}/>
+                    <select className='select-section' onClick={categoryChangeHandler}>
+                        <option className='selection-option' value="0">Select</option>
+                        <option className='selection-option' value="1">Starters</option>
+                        <option className='selection-option' value="2">Appetizers</option>
+                        <option className='selection-option' value="3">Main</option>
+                        <option className='selection-option' value="4">Desserts</option>
+                        <option className='selection-option' value="5">Soft beverages</option>
+                        <option className='selection-option' value="6">Alcohole beverages</option>
+                        <option className='selection-option' value="7">Hot beverages</option>
+                </select>
                 </div>
                 <div className='new-item_control'>
                     <label>Price</label>

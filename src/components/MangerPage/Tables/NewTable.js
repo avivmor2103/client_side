@@ -11,11 +11,11 @@ const NewTable = (props) => {
 
     const onCancelClickHandler =()=>{
         setIsEditting(false);
-    }
+    } 
 
     return (
         <div className="new-table-container">
-            {!isEditing && <button onClick={startEditingClickHandler}>Add New Table</button>}
+            {!isEditing && <button  onClick={startEditingClickHandler}>Add New Table</button>}
             {isEditing && <TableForm onCancelClick={onCancelClickHandler}/>} 
         </div>
     )

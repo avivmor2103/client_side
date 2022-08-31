@@ -1,26 +1,42 @@
 .new-item_controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    text-align: left;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
   
 .new-item_control label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
   
-.new-item_control input {
-    font: inherit;
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    width: 20rem;
-    max-width: 100%;
-  }
+.new-item_control input,
+.new-item_control select{
+  font: inherit;
+  font-weight: 100;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+  background: transparent;
+  outline: auto;
+  outline: solid;
+  outline-width: 1px;
+  color: white;
+}
+
+.new-item_control .selection-option{
+  color: black;
+  font-weight: 100;
+}
   
-.new-item_actions {
-    text-align: right;
-  }
+.new-item_actions{
+  text-align: right;
+}
+
+.new-item_actions button {
+  padding: 5px;
+}

@@ -1,38 +1,40 @@
-.cancel-item_controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    text-align: left;
-  }
-  
-.cancel-item_control label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-  
-.cancel-item_control input {
-    font: inherit;
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    width: 20rem;
-    max-width: 100%;
-  }
-  
-.cancel-item_actions {
-    text-align: right;
+.cancel-item_actions{
+  text-align: right; 
+}  
+
+.cancel-item_actions button{
+  padding: 3px;
 }
 
 .select-section{
-  font-weight: 900;
+  font: inherit;
+  font-weight: 100;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+  background: transparent;
+  outline: auto;
+  outline: solid;
+  outline-width: 1px;
+  color: white;
+
+
 }
 .selection-option{
-  font-weight: 900;
-  margin-bottom: 10px;
+  font-weight: 100;
+  color: black;
+  
 }
 
 .top-div-container{
-  gap: 10px;
+  gap: 15px;
+  
+}
+
+.items-cards-container{
+  display: flex;
+  margin-top: 10px;
+  gap: 15px;
 }

@@ -1,60 +1,52 @@
 import axios from 'axios';
-import React,{useState} from 'react';
-import './RemoveForm.css'
+import React from 'react';
+import './RemoveForm.css';
+import TableCard from './TableCard';
 
 const RemoveForm = (props) => {
 
-    const [enteredTable , setTable] = useState('');
 
-
-    const tableChangeHandler= (event)=>{
-        setTable(event.target.value); 
-    };
-
-    const submitHandler = (event)=>{
-        event.preventDefault();
-
-        const tableToDeleteBody = {
-            id : enteredTable,
-        }
-
-        const url = 'http://localhost:3001/api/tables/delete/' + tableToDeleteBody.id; 
-
-        const deleteTable = async () =>{ 
+    const onClickDeleteHandler = (tableNum) =>{ 
+        const url = 'http://localhost:3001/api/tables/delete/'+ tableNum; 
+    
+        const deleteItem = async () =>{ 
 
             try{
                 const response = await axios.delete(url);
                 if(response.status === 200)
                 {
-                    console.log(`Table ${enteredTable} deleted successfully`);
+                    console.log(`Table ${tableNum} deleted successfully`);
+                    console.log(response.data);
+                    props.updateTablesArray(response.data);
                 }
                 else{
                     console.log("Error");
                 }
-
             }catch(e){
                 console.log(e);
             }
         }
-        deleteTable();
-        setTable('');
-    };
+        deleteItem();
+    }
    
 
 
     return (
-        <form onSubmit={submitHandler}>
+        <div className='remove-table-container'>
             <div className='cancel-table_controls'>
                 <div className='cancel-table_control'>
-                    <label>Table Number</label>
-                    <input type='text' value={enteredTable} onChange={tableChangeHandler}/>
+                    <label>Delete Table</label>
                 </div>
             </div>
-            <div className='cancel-table_actions'>
-                <button type = "button" onClick={props.onCancelClick}>Cancel</button>
-                <button type= "submit">Delete Table</button>
+            <div className='tables-card-container'>
+                { props.tables.map( (table, index)=> { return <TableCard key={index} data={table} onClickDelete={onClickDeleteHandler}/>})
+                
+                }
             </div>
-    </form>
+            <div className='cancel-table_actions'>
+                <button onClick={props.onCancelClick}>Cancel</button>
+            </div>
+        </div>
     );
 }
  

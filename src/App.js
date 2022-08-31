@@ -9,6 +9,8 @@ import RestaurantPage from './components/RestaurantPage/RestaurantPage';
 import HomePage from './components/HomePage/HomePage';
 import ManegerPage from './components/MangerPage/MangerPage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
+import ChefPage from './components/ChefPage/ChefPage';
+import AttendancePage from './components/AttendancePage/AttendancePage';
 
 
 function App() {
@@ -62,7 +64,9 @@ function App() {
                 <Route path='/home-page/*' element={<HomePage/>}>
                   <Route path="restuarant-page" element={<RestaurantPage/>}/>
                   <Route path="maneger-page" element={<ManegerPage />}/>
-                  <Route path="profile-page" element={ <ProfilePage />}/> 
+                  <Route path="profile-page" element={ <ProfilePage />}/>
+                  <Route path="chef-page" element={ <ChefPage/> }/>
+                  <Route path='attendance-page' element={ <AttendancePage/>}/>
                 </Route>
               :
               ( 

@@ -1,12 +1,9 @@
-import AuthApi from '../../store/AuthApi.js';
+//import AuthApi from '../../store/AuthApi.js';
 import './RestaurantPage.css';
 import React, {useState, useRef} from 'react';
 import {default as axios} from 'axios';
 import TableButton from './TableButton';
-import TablePage from '../TablePage/TablePage'
-// import CollapsibleNavbar from './CollapsibleNavbar';
-// import ManegerPage from '../MangerPage/MangerPage.js';
-// import ProfilePage from '../ProfilePage/ProfilePage.js';
+import TablePage from '../TablePage/TablePage';
 
 const RestaurantPage = (props) => {
 
@@ -19,7 +16,6 @@ const RestaurantPage = (props) => {
     const [tableChoise  , setTableChoise] = useState(null); 
     const [isChoosenTable , setIsChoosenTable] = useState(false);
     const selectInputRef = useRef();
-    //const ctx = React.useContext(AuthApi);
 
     const chooseEreaClick = event => {
         const value = event.target.value;
@@ -56,8 +52,68 @@ const RestaurantPage = (props) => {
         ereaTables();
 
     }
+
+    const handlerTableClicked = (table) => {
+        setTableChoise(table);
+        setIsChoosenTable(true);
+        const newState = {
+            ...state,
+            tablesArray : []
+        };
+
+        setState(newState);
+    }
     
-    // const logoutClickHandler = ()=> {
+    const numSeatsUpdateHandler =(numSeats)=>{ 
+        console.log(numSeats);
+    }
+
+    const onReturnRestaurantPageHandler = () => {
+        setIsChoosenTable(false);
+    }
+
+    return(
+            <div className='restaurantPage-component'>
+            { !isChoosenTable ?
+                <>
+                    <div className='main-container'>
+                        <h3 className="section-title">Select Erea</h3>
+                        <select ref={selectInputRef} className='select-section' onClick={chooseEreaClick}>
+                            <option className='selection-option' value="0">Select</option>
+                            <option className='selection-option' value="1">Floor</option>
+                            <option className='selection-option' value="2">Bar</option>
+                            <option className='selection-option' value="3">Garden</option>
+                            <option className='selection-option' value="4">Terrace</option>
+                        </select>
+                    </div>
+
+                    <div className='button-section'>
+                        {state.tablesArray.length > 0 ? 
+                        
+                            <div className='table-title'>Choose Table No.</div>: null }
+                            <div className='buttons-container'>
+                                {state.tablesArray.map((tableNumber, index) => {
+                                    return <TableButton table={tableNumber} key={index} onClickTable={handlerTableClicked} numSeatsUpdate={numSeatsUpdateHandler} />
+                                })}
+                            </div> 
+                    </div>
+                </>: <TablePage table={tableChoise} onReturnRestaurantPage={onReturnRestaurantPageHandler}/>
+            
+            }
+            </div>
+    );
+};
+
+export default RestaurantPage ;
+
+
+
+
+
+    //const ctx = React.useContext(AuthApi);
+
+
+ // const logoutClickHandler = ()=> {
     //     const userEmail = Cookies.get("user");
     //     //console.log(userEmail) ;
 
@@ -97,66 +153,3 @@ const RestaurantPage = (props) => {
     //     }
     //     logoutRequest();
     // }
-
-    const handlerTableClicked = (table) => {
-        //console.log(table.num_table, table.num_seats);
-        setTableChoise(table);
-        setIsChoosenTable(true);
-        const newState = {
-            ...state,
-            tablesArray : []
-        };
-
-        setState(newState);
-    }
-    
-    const numSeatsUpdateHandler =(numSeats)=>{ 
-        console.log(numSeats);
-    }
-
-    const onReturnRestaurantPageHandler = () => {
-        setIsChoosenTable(false);
-    }
-
-    return(
-            <div className='restaurantPage-component'>
-                {/* <div className='top-component' >
-                    <CollapsibleNavbar title={'ServEat'} logoutClick={logoutClickHandler}/>
-                </div> */}
-            { !isChoosenTable ?
-                <>
-                    {/* <div className='top-component' >
-                        <CollapsibleNavbar title={'Tabit-App'} logoutClick={logoutClickHandler}/>
-                    </div> */}
-                    <div className='main-container'>
-                        <h3 className="section-title">Select Erea</h3>
-                        <select ref={selectInputRef} className='select-section' onClick={chooseEreaClick}>
-                            <option className='selection-option' value="0">Select</option>
-                            <option className='selection-option' value="1">Floor</option>
-                            <option className='selection-option' value="2">Bar</option>
-                            <option className='selection-option' value="3">Garden</option>
-                            <option className='selection-option' value="4">Terrace</option>
-                        </select>
-                    </div>
-
-                    <div className='button-section'>
-                        {state.tablesArray.length > 0 ? 
-                        
-                            <div className='table-title'>Choose Table No.</div>: null }
-                            <div className='bottons-container'>
-                                {state.tablesArray.map((tableNumber, index) => {
-                                    return <TableButton table={tableNumber} key={index} onClickTable={handlerTableClicked} numSeatsUpdate={numSeatsUpdateHandler} />
-                                })}
-                            </div>
-                        
-                        
-                       
-                    </div>
-                </>: <TablePage table={tableChoise} onReturnRestaurantPage={onReturnRestaurantPageHandler}/>
-            
-            }
-            </div>
-    );
-};
-
-export default RestaurantPage ;

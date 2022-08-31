@@ -20,6 +20,11 @@
     border-bottom: 1px black solid;
 }
 
+.selection-option{
+    color: black;
+    font-weight: 100;
+}
+
 
 .main-container .select-section{
     width: 200px;
@@ -54,13 +59,18 @@
     display: inline-block;
     gap : 10px ;
 }
-.bottons-container {
+.button-section .buttons-container {
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     gap: 3px;
+    color: white;
+}
+
+.button-section .btutons-container button:hover{
+    color: white;
 }
 
 button {
@@ -78,4 +88,9 @@ button:hover{
 
 .top-component{
     width: 100%;
+}
+
+.main-container .select-section{
+    color: black;
+    font-weight: 100;
 }

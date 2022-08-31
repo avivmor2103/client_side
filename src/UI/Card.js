@@ -8,7 +8,7 @@ const Card = (props ) =>{
     return(
         <div className='card'>
             <div>{props.name}</div>
-            <div>{props.price}</div>
+            <div>{props.price}</div> 
             <div className='x-button-container'>
                 <button className='x-cancle-btn' onClick={onCancleItem}>X</button>
             </div>

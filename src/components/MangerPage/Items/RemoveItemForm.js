@@ -1,65 +1,11 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import './RemoveItemForm.css';
-import ItemsCard from './ItemsCard'; 
+import ItemCard from './ItemCard'; 
 
 const RemoveItemFrom = (props) => {
     const [enteredItemId , setItemId] = useState('');
     const [itemsArray, setItemsArray] = useState([]);
-
-
-    const itemIdChangeHandler= (event)=>{
-        setItemId(event.target.value); 
-    };
-
-    const body = {
-        id:  enteredItemId
-    }
-
-    const onSelectCategoryHandler = (event)=>{
-        const value = event.target.value;
-        const url = 'http://localhost:3001/api/item/delete';
-        const getAllItems = async () =>{
-            try{
-                const response = await axios.get(url);
-                if(response.status === 200)
-                {
-                    console.log(`Items got successfully`);
-                }
-                else{
-                    console.log("Error");
-                }
-            }catch(e){
-                console.log(e);
-            }
-        }
-
-    }
-
-
-    const submitHandler = (event)=>{
-        event.preventDefault();
-
-        const url = 'http://localhost:3001/api/item/delete/'+ body.id; 
-        //console.log(url);
-        const deleteItem = async () =>{ 
-
-            try{
-                const response = await axios.delete(url);
-                if(response.status === 200)
-                {
-                    console.log(`Item ${enteredItemId} deleted successfully`);
-                }
-                else{
-                    console.log("Error");
-                }
-            }catch(e){
-                console.log(e);
-            }
-        }
-        deleteItem();
-        setItemId('');
-    };
 
     const onDeleteClickHandler = (itemId)=>{
 
@@ -104,14 +50,12 @@ const RemoveItemFrom = (props) => {
         }   
         getItemsByCategory();
     }
-   
-
 
     return (
         <div className='top-div-container'>
-            <div className='select-item-category-container' onClick={onChooseItemCategory}>
+            <div className='select-item-category-container'>
                 <h5 className="section-title" >Select Item Category</h5>
-                <select className='select-section' onClick={onSelectCategoryHandler}>
+                <select className='select-section' onClick={onChooseItemCategory}>
                     <option className='selection-option' value="0">Select</option>
                     <option className='selection-option' value="1">Starters</option>
                     <option className='selection-option' value="2">Appetizers</option>
@@ -122,11 +66,13 @@ const RemoveItemFrom = (props) => {
                     <option className='selection-option' value="7">Hot beverages</option>
                 </select>
             </div>
-            {itemsArray.map((itemElement, index) => {
-                                    return <ItemsCard item={itemElement} key={index} onDeleteClick={onDeleteClickHandler}/>
-                                })}     
-            <div>
-                <button type = "button" onClick={props.onCancelClick}>Cancel</button>
+            <div className="items-cards-container">
+                {itemsArray.map((itemElement, index) => {
+                                        return <ItemCard item={itemElement} key={index} onDeleteClick={onDeleteClickHandler} />
+                                    })}
+            </div>     
+            <div className='cancel-item_actions'>
+                <button type="button" onClick={props.onCancelClick}>Cancel</button>
             </div>
 
         </div>

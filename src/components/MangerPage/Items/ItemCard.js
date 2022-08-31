@@ -1,6 +1,6 @@
 import React from 'react';
-import './ItemsCard.css';
-const ItemsCard = (props) => {
+import './ItemCard.css';
+const ItemCard = (props) => {
 
     const onClickHandler = () =>{
         console.log(props.item.item_id);
@@ -23,4 +23,4 @@ const ItemsCard = (props) => {
      );
 }
  
-export default ItemsCard;
+export default ItemCard;

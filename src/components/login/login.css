@@ -25,12 +25,13 @@
   box-sizing: border-box;
 }
 
-.title {
-  font-weight: 1200;
+.login_component .title {
+  font-weight: 100;
   font-size: 32px;
-  color: #937dc2;
+  color: #AFB4FF;
   font-family: 'Ibarra Real Nova', serif;
 }
+
 
 .email-element,
 .password-element {
@@ -38,6 +39,7 @@
   border-radius: 20px;
   width: 100%;
   border: 1px solid #f9f9f9;
+  font-weight: 100;
 }
 
 .email-element:focus,
@@ -59,27 +61,36 @@
   padding: 5px;
   color: white;
   cursor: pointer;
-  background-color: #f6c6ea;
+  background-color: #AFB4FF;
   border: 1px solid #f6c6ea;
   border-radius: 20px;
 }
 
 .login-button:hover {
-  background-color: #faa5e5;
-  border: 1px solid #faa5e5;
+  background-color: #797ec5;
+  color: white;
+  border: 1px solid #AFB4FF;
 }
 
-.register-button {
+.buttons-container .register-button {
   padding: 5px;
-  color: #fd2ec9;
   cursor: pointer;
-  background-color: transparent;
+  background-color: #AFB4FF;
   border: 1px solid #f6c6ea;
   border-radius: 20px;
 }
 
-.register-button:hover {
-  background-color: #fd2ec9;
+.buttons-container .register-button:hover {
+  background-color: #797ec5;
   color: white;
-  border: 1px solid #fd2ec9;
+  border: 1px solid #AFB4FF;
+}
+
+
+.wrapper{
+  position:relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

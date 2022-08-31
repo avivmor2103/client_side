@@ -23,6 +23,7 @@
   
 .new-table_actions {
     text-align: right;
+
 }
 
 .new-table-select{
@@ -32,5 +33,35 @@
 }
 
 .new-table-select .new-table-option{
+  font-weight: 900;
+}
+
+.new-table_controls input{
+  background-color: transparent;
+  outline: auto;
+  outline: solid;
+  outline-width: 1px;
+  color: white;
+  font-weight: 100;
+}
+
+.new-table-select{
+  outline: auto;
+  outline: solid;
+  outline-width: 1px;
+  background-color: transparent;
+  color: white;
+  font-weight: 100;
+}
+
+.new-table-select .new-table-option{
+  color: black;
+  font-weight: 100;
+}
+
+form .new-table_actions button{
+  padding: 5px;
+}
+.title-conatainer{
   font-weight: 900;
 }

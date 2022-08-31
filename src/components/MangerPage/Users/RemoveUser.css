@@ -13,25 +13,33 @@
     font: inherit;
     cursor: pointer;
     padding: 1rem 2rem;
-    border: 1px solid #40005d;
-    background-color: #40005d;
+    border: 1px solid rgb(16, 16, 104);
+    background-color: rgb(16, 16, 104);
     color: white;
     border-radius: 12px;
 }
 
-.remove-user-container button:hover,
-.remove-user-container button:active {
-    background-color: #510674;
-    border-color: #510674;
+.remove-user-container .btn{
+    padding: 15px;
+    width: 120px;
+    font-weight: 100;
+    border-radius: 8px;
 }
 
-.remove-user-container button.alternative {
+.remove-user-container .btn:hover,
+.remove-user-container .btn:active {
+    background-color: #90E0EF;
+    border-color: #510674;
+    color: black;
+}
+
+.remove-user-container .btn .alternative {
     color: #220131;
     border-color: transparent;
     background-color: transparent;
 }
 
-.remove-user-container button.alternative:hover,
-.remove-user-container button.alternative:active {
+.remove-user-container .btn.alternative:hover,
+.remove-user-container .btn.alternative:active {
     background-color: #ddb3f8;
 }

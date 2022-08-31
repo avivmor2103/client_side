@@ -15,7 +15,7 @@ const RemoveItem = (props) => {
 
     return (
         <div className='remove-item-container'>
-            {!isEditing && <button onClick={startEditingClickHandler}>Delete Item</button>}
+            {!isEditing && <button className="btn" onClick={startEditingClickHandler}>Delete Item</button>}
             {isEditing && <RemoveItemForm onCancelClick={onCancelClickHandler}/>} 
         </div>
     )

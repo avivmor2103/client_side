@@ -1,5 +1,5 @@
 .maneger-page-container{
-    gap: 1px ;
+    gap: 15px ;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,4 +9,14 @@
 .maneger-page-container .title-page-container{
     font-weight: 900;
     font-size: x-large;
+}
+
+.type-actions-container{
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 1rem;
+    border: 1px solid #9C9EFE;
+    background-color: #9C9EFE;
+    color: white;
+    border-radius: 12px;
 }

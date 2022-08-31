@@ -4,7 +4,6 @@ import './EditField.css';
 
 const EditField = (props) => {
     const [isEditing , setIsEditting] = useState(false);
-    const [userData, setUserData] = useState('');
 
     const startEditingClickHandler = ()=> {
         setIsEditting(true);
@@ -13,7 +12,7 @@ const EditField = (props) => {
     const onCancelClickHandler =()=>{
         setIsEditting(false);
     }
-
+  
     return ( 
         <div className='new-field-container'>
             {!isEditing && 
@@ -22,7 +21,7 @@ const EditField = (props) => {
                     <button onClick={startEditingClickHandler}>Edit</button>
                 </div>
             }
-            {isEditing && <FieldForm onCancelClick={onCancelClickHandler} field={props.field}/>} 
+            {isEditing && <FieldForm onCancelClick={onCancelClickHandler} field={props.field} data={props.userData} user={props.data}/>} 
         </div>
     );
 }

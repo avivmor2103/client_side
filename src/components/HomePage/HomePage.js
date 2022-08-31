@@ -7,7 +7,7 @@ import './HomePage.css';
 const HomePage = (props)=> {
     const location = useLocation();
     useEffect(()=>{
-        console.log(location.pathname.replace('/','').split('/'));
+        //console.log(location.pathname.replace('/','').split('/'));
     }, [location]);
 
     const linkStyle = {

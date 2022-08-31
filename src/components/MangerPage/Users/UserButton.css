@@ -1,0 +1,16 @@
+.user-delete-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    outline: auto;
+    outline-width: 1px;
+    outline-color: #c2c1ff;
+    outline-style: solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.user-delete-container button:hover{
+    color: red;
+}

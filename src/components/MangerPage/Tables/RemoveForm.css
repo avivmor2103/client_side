@@ -24,3 +24,18 @@
 .cancel-table_actions {
     text-align: right;
   }
+ 
+.tables-card-container{
+  display: flex ;
+  flex-wrap: wrap;
+  gap :5px;
+}
+
+.cancel-table_actions button{
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.remove-table-container button{
+  padding: 1px;
+}

@@ -2,17 +2,21 @@
     background: rgb(184, 149, 214);
     box-shadow: 0 2px 8px rgba(122, 20, 224, 0.26);
     border-radius: 8px;
-    padding: 3px;
+    padding: 8px;
     display: flex;
     justify-content: center;
     gap: 10px;
     flex-direction: row;
-    width: 75%;
+    outline: auto;
 }
 
-.card .x-cancle-btn :hover{
+.card div{
+    color: black;
+}
+
+.card .x-cancle-btn:hover{
     padding: 3px ;
-    background-color: red;
+    color: red;
     cursor: pointer;
 }
 

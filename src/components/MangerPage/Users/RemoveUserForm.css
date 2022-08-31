@@ -12,15 +12,34 @@
     display: block;
   }
   
-.cancel-user_control input {
+/* .cancel-user_control input {
     font: inherit;
     padding: 0.5rem;
     border-radius: 6px;
     border: 1px solid #ccc;
     width: 20rem;
     max-width: 100%;
-  }
+} */
   
 .cancel-user_actions {
     text-align: right;
-  }
+}
+
+button:hover {
+  text-align: right;
+  color: rgb(143, 255, 143);
+}
+
+.users-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.remove-form-container button{  
+  padding: 5px;
+  gap: 10px;
+}

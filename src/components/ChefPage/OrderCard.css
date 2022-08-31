@@ -1,0 +1,43 @@
+.order-card-container{
+   
+    text-align: center;
+    font-size:'40px';
+    cursor: pointer;
+    outline-width: 1px;
+    outline-color: black;
+    outline-style: solid;
+    border-radius: 5px;
+    color: black;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 11%; /* explanation below */
+    margin: 5px;
+    height: auto;
+    width: auto;
+    box-shadow: black;
+    padding: 5px;
+}
+
+.order-card-container .detailes-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: ro;
+    font-size: smaller;
+    font-weight: 100;
+    gap:10px;
+}
+
+.items-table-container{
+    display: flex;
+    font-weight: 100;
+}
+
+.column-container{
+    border-right: solid;
+}
+
+.row-container{
+    border-bottom: solid;
+}

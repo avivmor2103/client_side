@@ -1,0 +1,32 @@
+.order-container{
+    margin: 25px 30%;
+    text-align: center;
+    font-size:'40px';
+    cursor: pointer;
+    border-radius: 5px;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 11%; /* explanation below */
+    margin: 5px;
+    height: 30px;
+    width: 100px;
+    box-shadow: black;
+    display: block;
+}
+
+.orders-container {
+    display: flex ;
+    flex-wrap: wrap;
+    gap :5px;
+}
+
+.title-container{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: x-large;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

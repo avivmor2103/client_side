@@ -13,25 +13,33 @@
     font: inherit;
     cursor: pointer;
     padding: 1rem 2rem;
-    border: 1px solid #40005d;
-    background-color: #40005d;
+    border: 1px solid rgb(16, 16, 104);
+    background-color: rgb(16, 16, 104);
     color: white;
     border-radius: 12px;
 }
 
-.delete-table-container button:hover,
-.delete-table-container button:active {
-    background-color: #510674;
-    border-color: #510674;
+.delete-table-container .btn{
+    padding: 15px;
+    width: 120px;
+    font-weight: 100;
+    border-radius: 8px;
 }
 
-.delete-table-container button.alternative {
+.delete-table-container .btn:hover,
+.delete-table-container .btn:active {
+    background-color: #90E0EF;
+    border-color: #510674;
+    color: black;
+}
+
+.delete-table-container .btn .alternative {
     color: #220131;
     border-color: transparent;
     background-color: transparent;
 }
 
-.delete-table-container button.alternative:hover,
-.delete-table-container button.alternative:active {
+.delete-table-container .btn .alternative:hover,
+.delete-table-container .btn .alternative:active {
     background-color: #ddb3f8;
 }

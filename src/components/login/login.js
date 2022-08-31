@@ -3,7 +3,7 @@ import './login.css';
 import AuthApi from '../../store/AuthApi';
 import {default as axios} from 'axios';
 import Cookies from 'js-cookie';
-
+import { FaUnlockAlt, FaUser} from "react-icons/fa";
 
 const LoginPage = (props) => {
     const [ state, setState] =  React.useState({
@@ -85,6 +85,44 @@ const LoginPage = (props) => {
         setState(newState);
     }
 
+    return(
+        <div id="box">
+            <div className="login_component">
+                <div className="title">Login</div>
+                <div className="element-container">
+                    <div className='wrapper'>
+                        <FaUser color="#AFB4FF"/>
+                        <input 
+                            className="email-element"
+                            value={state.email} 
+                            onChange={handleChangeEmail} 
+                            placeholder='Email'>
+                        </input>
+                    </div>
+                    <div className='wrapper'>
+                        <FaUnlockAlt color="#AFB4FF"/>
+                        <input
+                            className="password-element"
+                            value={state.password} 
+                            type="password" 
+                            onChange={(e) => handleChangePassword(e)} 
+                            placeholder='Password'>
+                        </input>
+                    </div>
+                    <div className="msg-container">
+                        <span onChange={(e) => handleChangeMsg(e)} placeholder='msg'>{state.msg}</span>
+                    </div>
+                </div>
+                <div className="buttons-container">
+                <button className="login-button" onClick={handleLoginClick}>Log-in</button>
+                <button className="register-button" onClick={props.onClickToRegistrationPage}>Register</button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default LoginPage;
 
 
     // return (
@@ -114,35 +152,3 @@ const LoginPage = (props) => {
     //             </div>
     //         </div>
     // );
-    return(
-        <div id="box">
-            <div className="login_component">
-                <div className="title">Login</div>
-                <div className="element-container">
-                    <input 
-                        className="email-element"
-                        value={state.email} 
-                        onChange={handleChangeEmail} 
-                        placeholder='Email'>
-                    </input>
-                    <input
-                        className="password-element"
-                        value={state.password} 
-                        type="password" 
-                        onChange={(e) => handleChangePassword(e)} 
-                        placeholder='Password'>
-                    </input>
-                    <div className="msg-container">
-                        <span onChange={(e) => handleChangeMsg(e)} placeholder='msg'>{state.msg}</span>
-                    </div>
-                </div>
-                <div className="buttons-container">
-                <button className="login-button" onClick={handleLoginClick}>Log-in</button>
-                <button className="register-button" onClick={props.onClickToRegistrationPage}>Register</button>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-export default LoginPage;
