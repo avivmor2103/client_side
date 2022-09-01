@@ -83,6 +83,10 @@
   padding-right: 30px;
 }
 
+.link-icon-container .chef-page{
+  padding-right: 70px;
+}
+
 .navbar-option{
   padding-right: 55px;
   margin-left: 10px;
@@ -93,5 +97,5 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap:5px;
+  gap:7px;
 }

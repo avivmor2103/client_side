@@ -72,7 +72,7 @@ const CollapsibleNavbar = (props)=> {
                     const users = [...response.data];
                     const email = Cookies.get("user");
                     const user = users.find(item => item.email === email);
-                    console.log(user);
+                    //console.log(user);
                     if(user.position === "Chef"){
                         setIsChef(true);
                     }
@@ -148,14 +148,14 @@ const CollapsibleNavbar = (props)=> {
                         ["nav-link","rest-link", isActive ? "active" : null]
                         .filter(Boolean)
                         .join(" ")
-                    }>Restaurant</NavLink>
+                        }>Restaurant</NavLink>
                     </div>
                     
                     { isChef? 
                         <div className="link-icon-container">
                             <MdManageAccounts/>
                             <NavLink to='chef-page' className={({ isActive }) =>
-                            ["nav-link", isActive ? "active" : null]
+                            ["nav-link", 'chef-page', isActive ? "active" : null]
                             .filter(Boolean)
                             .join(" ")
                             }>Chef</NavLink>

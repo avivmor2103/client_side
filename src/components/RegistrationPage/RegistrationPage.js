@@ -54,10 +54,10 @@ const RegistrationPage = (props) => {
     setPassword(value);
   }
 
-  const onChangePositionHandler= (event) => {
-    let value = event.target.value;
-    setPosition(value);
-  }
+  // const onChangePositionHandler= (event) => {
+  //   let value = event.target.value;
+  //   setPosition(value);
+  // }
 
   const onSubmitHandler = (event) => {
     const newUserDataRequest = {
@@ -112,6 +112,16 @@ const RegistrationPage = (props) => {
     registerRequest();
   }
 
+  const selectOptionPositionHandler = (event) =>{
+    if(event.target.value === "Select")
+    {
+      return;
+    }else{
+      console.log(event.target.value);
+      setPosition(event.target.value);
+    }
+  }
+
   return (
     <div id="box">
       <form className="registration_component" onSubmit={onSubmitHandler}>
@@ -130,11 +140,20 @@ const RegistrationPage = (props) => {
             <input className="phone-element" placeholder="Phone-Number" onChange={onChangePhoneNumberHandler}></input>
           </div>
           <div className="div-row">
-            <input className="date-element" placeholder="Date of birth" onChange={onChangeDateHandler}></input>
+            <input type="date" min="1990-01-01" max="2005-01-01" className="date-element" placeholder="Date of birth" onChange={onChangeDateHandler}></input>
             <input className="password-element" type="password" placeholder="Password" onChange={onChangePasswordHandler}></input>
           </div>
           <div className="div-row">
-            <input className="position-element" placeholder="Position" onChange={onChangePositionHandler}></input>
+            {/* <input className="position-element" placeholder="Position" onChange={onChangePositionHandler}></input> */}
+            <select className="position-element" onClick={selectOptionPositionHandler}>
+              <option className='selection-option'>Select</option>
+              <option className='selection-option'>Manager</option>
+              <option className='selection-option'>Chef</option>
+              <option className='selection-option'>Bartender</option>
+              <option className='selection-option'>Waiter</option>
+              <option className='selection-option'>Host</option>
+              <option className='selection-option'>Cook</option>
+            </select>
           </div>
           <div className="msg-container">
             <span placeholder="msg">{msg}</span>
