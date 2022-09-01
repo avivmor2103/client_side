@@ -12,8 +12,7 @@
     margin: 5px;
     height: 30px;
     width: 100px;
-    box-shadow: black;
-    display: block;
+    
 }
 
 .orders-container {
@@ -29,4 +28,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.select-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.filter-order-select{
+    font-weight: 100;
+    border-radius: 7px;
+}
+
+.filter-option{
+    font-weight: 100;
+
 }

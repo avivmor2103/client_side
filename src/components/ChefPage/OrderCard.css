@@ -1,5 +1,5 @@
 .order-card-container{
-   
+    
     text-align: center;
     font-size:'40px';
     cursor: pointer;
@@ -8,19 +8,65 @@
     outline-style: solid;
     border-radius: 5px;
     color: black;
-    background-color: transparent;
+    background-color: #FCF69C;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex: 11%; /* explanation below */
     margin: 5px;
-    height: auto;
-    width: auto;
-    box-shadow: black;
+    height:fit-content;
+    width:fit-content;
+    box-shadow: 5px 10px #888888;
     padding: 5px;
 }
 
-.order-card-container .detailes-container{
+.order-card-container-in{
+    
+    text-align: center;
+    font-size:'40px';
+    cursor: pointer;
+    outline-width: 1px;
+    outline-color: black;
+    outline-style: solid;
+    border-radius: 5px;
+    color: black;
+    background-color: #fca79c;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 11%; /* explanation below */
+    margin: 5px;
+    height:fit-content;
+    width:fit-content;
+    box-shadow: 5px 10px #888888;
+    padding: 5px;
+}
+
+.order-card-container-post{
+    
+    text-align: center;
+    font-size:'40px';
+    cursor: pointer;
+    outline-width: 1px;
+    outline-color: black;
+    outline-style: solid;
+    border-radius: 5px;
+    color: black;
+    background-color: #8feb86;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 11%; /* explanation below */
+    margin: 5px;
+    height:fit-content;
+    width:fit-content;
+    box-shadow: 5px 10px #888888;
+    padding: 5px;
+}
+
+.order-card-container .detailes-container,
+.order-card-container-in .detailes-container,
+.order-card-container-post .detailes-container{
     display: flex;
     flex-wrap: wrap;
     flex-direction: ro;
@@ -32,6 +78,7 @@
 .items-table-container{
     display: flex;
     font-weight: 100;
+    gap : 10px;
 }
 
 .column-container{
@@ -40,4 +87,32 @@
 
 .row-container{
     border-bottom: solid;
+}
+
+.order-card-container .select-status,
+.order-card-container-in .select-status,
+.order-card-container-post .select-status{
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: 100;
+}
+
+option{
+    font-weight: 100;
+}
+
+.top-card-div{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;;
+}
+
+.top-card-div button{
+    padding: 5px;
+    background-color: transparent;
+    margin-top: 0px;
+}
+
+.top-card-div button:hover{
+    color: rgb(95, 95, 95)
 }
