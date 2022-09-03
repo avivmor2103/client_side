@@ -118,7 +118,7 @@ const FieldForm = (props) => {
     return (
         <form onSubmit={submitHandler}>
             <div className='prev-data-container'>
-                Prev {props.field}:  {props.data}
+                Current {props.field}:  {props.data}
             </div>
             <div className='update-field_controls'>
                 <div className='update-field_control'>

@@ -11,6 +11,7 @@ import ManegerPage from './components/MangerPage/MangerPage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import ChefPage from './components/ChefPage/ChefPage';
 import AttendancePage from './components/AttendancePage/AttendancePage';
+import HostessesPage from './components/HostessesPage/HostessesPage';
 
 
 function App() {
@@ -67,6 +68,8 @@ function App() {
                   <Route path="profile-page" element={ <ProfilePage />}/>
                   <Route path="chef-page" element={ <ChefPage/> }/>
                   <Route path='attendance-page' element={ <AttendancePage/>}/>
+                  <Route path='Hostesses-page' element={ <HostessesPage/>}/>
+
                 </Route>
               :
               ( 

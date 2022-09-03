@@ -17,7 +17,7 @@ const EditField = (props) => {
         <div className='new-field-container'>
             {!isEditing && 
                 <div className='field-element-container'>
-                    <div>{props.field}: {props.userData}</div>
+                    <div>{props.field}:   {props.userData}</div>
                     <button onClick={startEditingClickHandler}>Edit</button>
                 </div>
             }
