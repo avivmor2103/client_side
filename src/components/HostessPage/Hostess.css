@@ -1,0 +1,106 @@
+.top-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 50px;
+  gap: 40px;
+  width: 100%;
+}
+          
+.form-input {
+  font-weight: 300;
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 15px;
+  color: rgb(163, 117, 244);
+  outline: auto rgb(162, 140, 227);
+  width: 20%;
+}
+
+.form-input:hover {
+  background-color: rgb(236, 161, 199);
+  color: black;
+}
+
+
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgb(208, 183, 244);
+  outline: solid rgb(174, 135, 240);
+  border-radius: 12px;
+  width: 100%;
+  padding: 100px;
+}
+
+.host-title{
+  font-size: 30px;
+  font-weight: 900;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(67, 40, 92);
+}
+
+
+.form-select-guests{
+  font-weight: 300;
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 15px;
+  color: rgb(163, 117, 244);
+  outline: auto rgb(162, 140, 227);
+  width: 100%;
+  cursor: pointer;
+}
+
+.form-input-date{
+  font-weight: 300;
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 15px;
+  color: rgb(163, 117, 244);
+  outline: auto rgb(162, 140, 227);
+  width: 100%;
+  cursor: pointer;
+}
+
+.form-select-hour{
+  font-weight: 300;
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 15px;
+  color: rgb(163, 117, 244);
+  outline: auto rgb(162, 140, 227);
+  width: 100%;
+  cursor: pointer;
+}
+
+.data-input-conatainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.form-btn-action{
+  width:50%;
+  background-color: #fff;
+}
+
+.form-btn-action:hover{
+  color: #fff;
+  background-color: transparent;
+}
+
+.actions-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

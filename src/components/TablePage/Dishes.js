@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import ItemButton from "./ItemButton";
-import './TablePage.css';
 import './Dishes.css';
 
 

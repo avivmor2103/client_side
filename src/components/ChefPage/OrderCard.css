@@ -79,10 +79,13 @@
     display: flex;
     font-weight: 100;
     gap : 10px;
+    /* outline-style: solid;
+    outline-width: thin ; */
 }
 
 .column-container{
-    border-right: solid;
+    padding: 5px;
+
 }
 
 .row-container{
@@ -116,3 +119,20 @@ option{
 .top-card-div button:hover{
     color: rgb(95, 95, 95)
 }
+
+.items-table-container th{
+    font-weight: 300;
+    border-bottom: solid;
+    border-bottom-width: 100%;
+    gap: 5px;
+}
+
+table td {
+    margin: 12px 12px 12px 12px;
+    padding: 12px 12px 12px 12px;
+  }
+table tr{
+    border-bottom: solid;
+    border-bottom-width:0.1ch;
+}
+  

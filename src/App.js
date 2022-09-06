@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import LoginPage from './components/login/login';
 import AuthApi from './store/AuthApi';
+import {OrdersContextProvider} from './store/OrdersArray';
 import Cookies from 'js-cookie';
 import RegistrationPage from './components/RegistrationPage/RegistrationPage';
 import RestaurantPage from './components/RestaurantPage/RestaurantPage';
@@ -11,12 +12,14 @@ import ManegerPage from './components/MangerPage/MangerPage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import ChefPage from './components/ChefPage/ChefPage';
 import AttendancePage from './components/AttendancePage/AttendancePage';
-import HostessesPage from './components/HostessesPage/HostessesPage';
-
+import HostessPage from './components/HostessPage/HostessPage';
+import Hostess from './components/HostessPage/Hostess';
+import DeleteReservation from './components/HostessPage/Delete/DeleteReservation';
+import UpdateReservation from './components/HostessPage/Update/UpdateReservation';
 
 function App() {
   const [auth, setAuth] = useState(false);
-  const [isRegistrationClicked , setIsRegistrationClicked] = useState(false);
+  const [isRegistrationClicked , setIsRegistrationClicked] = useState(false); 
 
   const readCookie = () => {
     const user = Cookies.get("user");
@@ -25,7 +28,7 @@ function App() {
     }
   }
 
-  React.useEffect(() =>{
+  useEffect(() =>{
     readCookie();
   }, [auth]);
 
@@ -41,7 +44,7 @@ function App() {
 
   return (
       <AuthApi.Provider value={{auth , setAuth}}>
-        
+        <OrdersContextProvider>
         <Router>
           <Routes>
             {!auth && !isRegistrationClicked ?
@@ -62,15 +65,19 @@ function App() {
              <Route path="/" element={ <Navigate to="home-page"/>}/> 
             {
               auth && !isRegistrationClicked?
-                <Route path='/home-page/*' element={<HomePage/>}>
-                  <Route path="restuarant-page" element={<RestaurantPage/>}/>
-                  <Route path="maneger-page" element={<ManegerPage />}/>
-                  <Route path="profile-page" element={ <ProfilePage />}/>
-                  <Route path="chef-page" element={ <ChefPage/> }/>
-                  <Route path='attendance-page' element={ <AttendancePage/>}/>
-                  <Route path='Hostesses-page' element={ <HostessesPage/>}/>
-
-                </Route>
+                
+                  <Route path='/home-page/*' element={<HomePage/>}>
+                    <Route path="restuarant-page" element={<RestaurantPage/>}/>
+                    <Route path="maneger-page" element={<ManegerPage />}/>
+                    <Route path="profile-page" element={ <ProfilePage />}/>
+                    <Route path="chef-page" element={ <ChefPage/> }/>
+                    <Route path='attendance-page' element={ <AttendancePage/>}/>
+                    <Route path='hostess-page/' element={ <HostessPage/>}>
+                      <Route path='new-reservation' element={<Hostess/>}/>
+                      <Route path='update-reservation' element={<UpdateReservation/>}/>
+                      <Route path='delete-reservation' element={<DeleteReservation/>}/>
+                    </Route>
+                  </Route>
               :
               ( 
                 !auth && !isRegistrationClicked ?
@@ -81,6 +88,7 @@ function App() {
             }
           </Routes>
         </Router>
+        </OrdersContextProvider>
       </AuthApi.Provider>
   );
 }

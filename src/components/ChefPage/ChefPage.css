@@ -10,9 +10,7 @@
     text-align: center;
     flex: 11%; /* explanation below */
     margin: 5px;
-    height: 30px;
-    width: 100px;
-    
+    height: 100%;    
 }
 
 .orders-container {

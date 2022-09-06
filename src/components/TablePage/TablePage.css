@@ -1,103 +1,20 @@
 /*Table Page style*/
 
 .table-page-container{
-    display: inline-block;
-    outline: auto;
-    width: 100%;
-}
-
-
-/* Top Component style*/
-.top-container-div{
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    outline: auto;
-    width : 100%;
-}
-
-.header-container button{
-    padding: 5px;
-    margin-left: 0px;
-}
-
-.top-container-div .top-header-div{
-    font-weight: 900;
-    font-size:x-large;
-    color:#2B4865;
-    padding: 10px;
     width: 100%;
-    letter-spacing: 0.24px;
-    line-height: 1.5;
-    position: relative;
 }
-
-.label-class{
-    font-weight: 900;
-}
-
-.top-labels{
-    align-items: center;
-    display: flex;
-
-}
-
-.header-container{
-    display: flex;
-
-}
-
-
-/* Middle Page*/
 
 .middle-components{
     display: flex;
     width: 100%;
     justify-content: center;
-    gap: 40% ;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 1%;
     padding-bottom: 20px;
-}
-
-/*middle page - left*/
-    .middle-div-container{
-        display: flex;
-        gap: 45px;
-        justify-items: right;
-        width: 100%;
-    }
-
-    .middle-div-container button{
-        border-radius: 8px;
-        margin-left: 10px;
-        padding: 7px;
-        border: none;
-        background-color: #d1d4ff;
-    }
-
-    .middle-div-container button :hover{
-        background-color: blue;
-        cursor: pointer;
-    }
-    
-    .dish-container{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        gap: 5px;
-
-    }
-    .items-container{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .middle-left-title{
-        font-weight: 900;
-    }
-
-    .items-container{
-        gap : 5px;
-    }
+}  
 
 /*middle page - right*/
 
@@ -110,10 +27,12 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+        align-items: baseline;
         gap: 5px;
         width: 100%;
         
     }
+
 
     .middle-right-container{
         width: 100%;
@@ -126,13 +45,3 @@
         
 
     }
-
-/* Bottom Container */
-
-.bottom-div-container{
-    outline: auto;
-}
-
-.bottom-div-container .total-amout-container{
-    font-weight: 900;
-}

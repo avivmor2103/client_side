@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './TablePage.css';
+import './ButtomComponent.css';
 
 
 const ButtomComponent = (props) =>{ 

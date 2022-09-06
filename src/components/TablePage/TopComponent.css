@@ -8,3 +8,51 @@
 .top{
   outline-width: 10px;
 }
+
+.top-container-div{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width : 100%;
+  box-shadow:#2B4865;
+  border-radius: 8px;
+
+}
+
+.header-container button{
+  padding: 10px;
+  height: 50px;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.header-container button:hover{
+  color: #fff;
+}
+
+.top-container-div .top-header-div{
+  font-weight: 900;
+  font-size:x-large;
+  color:#2B4865;
+  padding: 10px;
+  width: 100%;
+  letter-spacing: 0.24px;
+  height: 5rem;
+}
+
+.label-class{
+  font-weight: 900;
+  font-size: large;
+}
+
+.top-labels{
+  align-items: center;
+  display: flex;
+
+}
+
+.header-container{
+  display: flex;
+
+}

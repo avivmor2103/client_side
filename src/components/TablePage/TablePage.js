@@ -1,11 +1,14 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect,useContext} from 'react';
 import TopComponent from './TopComponent';
 import Dishes from './Dishes';
 import TableItems from './TableItems';
 import ButtomComponent from './ButtomComponent';
 import './TablePage.css';
 import axios from 'axios';
+import OrdersArrayContext from '../../store/OrdersArray';
 
+
+ 
 
 const TablePage = (props) => {
     const [tableNum , setTableNum] = useState(props.table.num_table);
@@ -13,6 +16,10 @@ const TablePage = (props) => {
     const [totalAmount , setTotalAmount] = useState(0);
     const [numDiners , setNumDiners] = useState(2);
     const [itemsArray , setItemsArray] = useState(props.table.items_array);
+    const ctx = useContext(OrdersArrayContext);
+    const [orderItemsList, setOrderItemsList] = useState([]);
+    const [itemNotes, setItemNotes] = useState('');
+    const [itemQuantity, setItemQuantity] = useState('1');
 
     useEffect(()=>{
         let sum = 0 ;
@@ -31,23 +38,54 @@ const TablePage = (props) => {
         const total = parseInt(newItem.price)+ totalAmount;
         setTotalAmount(total);
         setItemsArray((prevItems)=>{
-            return [ newItem, ...prevItems]
+            return [ ...prevItems, newItem]
         });
-        //console.log(itemsArray);
+
+        const newItemInOrder = {
+            name: newItem.name,
+            notes: itemNotes,
+            quantity: itemQuantity,
+        }
+
+        setOrderItemsList((prevItemsList)=>{
+            return [newItemInOrder, ...prevItemsList];
+        });
     }
 
     const onDeleteItemFromItemsArray= (item)=>{
-        //console.log(itemsArray);
         const total = totalAmount - parseInt(item.price) ;
         setTotalAmount(total);
         const a = [...itemsArray]
         const idx = a.findIndex(elem => elem.name === item.name);
         a.splice(idx,1);
-        //console.log(a);
         setItemsArray(a);
     }
 
     const onSendClickHandler= () => {
+        const newOrderBody = {
+            tableNumber : tableNum,
+            employeeName : "",
+            employeeId: "0",
+            itemsList : orderItemsList
+        }
+        const orderURL= 'http://localhost:3001/api/order/create';
+        const createNewOrder = async () => {
+            try{
+                const response = await axios.post(orderURL, newOrderBody);
+                if(response.status === 201)
+                {
+                    console.log(response.data);
+                    ctx.setOrdersArray((prevOrders)=>{
+                        return [response.data ,...prevOrders];
+                    })
+                }else{
+                    console.log('Error occur');
+                }
+            }catch(e){
+
+            }
+        }
+        createNewOrder();
         const body = {
             num_table: tableNum,
             items_array :itemsArray
@@ -70,17 +108,19 @@ const TablePage = (props) => {
             }
         }
         updateTableItems();
+        setOrderItemsList([]);
         props.onReturnRestaurantPage();
-        // itemsArray.forEach( elem => {
-        //     console.log(elem);
-        // });
     }
 
     const onCheckClickHandler = () =>{
         return console.log('Check- Please');
     }
 
-    return(
+    const setQuantityHandler = (value)=> {
+        setItemQuantity(value)
+    }
+
+    return( 
 
         <div className='table-page-container'>
             <TopComponent 
@@ -99,7 +139,7 @@ const TablePage = (props) => {
                     numTable={tableNum} 
                     items={itemsArray} 
                     onDeleteItem={onDeleteItemFromItemsArray}
-                    
+                    setQuantity={setQuantityHandler}
                 />
             </div>
             <ButtomComponent numTable={tableNum}

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React , {useState} from 'react';
 import './OrderCard.css';
+import { FaTrashAlt } from "react-icons/fa";
+
 
 const OrderCard = (props) => {
 
@@ -51,27 +53,29 @@ const OrderCard = (props) => {
                     <div>Table No.{props.orderData.tableNumber}</div>
                     <div>Employee: {props.orderData.employeeName}</div>
                 </div>
-                <button onClick={onDeleteOrderFromArray}>X</button>
+                <button onClick={onDeleteOrderFromArray}><FaTrashAlt/></button>
             </div>
             <div className='items-table-container'>
-                <div className='column-container'>
-                    <div  className='row-container'>Name</div>
-                    {
-                        props.orderData.itemsList.map((item, index)=> { return <div key={index}>{item.name}</div>})
-                    }
-                </div>
-                <div className='column-container'>
-                    <div className='row-container'>Notes</div>
-                    {
-                        props.orderData.itemsList.map((item, index)=> { return <div key={index}>{item.notes}</div>})
-                    }
-                </div>
-                <div>
-                    <div className='row-container'>Quantity</div>
-                    {
-                        props.orderData.itemsList.map((item, index)=> { return <div key={index}>{item.quantity}</div>})
-                    }
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Notes</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { props.orderData.itemsList.map((item, key) => {
+                        return (
+                            <tr key={key}>
+                                <td>{item.name}</td>
+                                <td>{item.notes}</td>
+                                <td>{item.quantity}</td>
+                            </tr>
+                        )
+                        })}
+                    </tbody>
+                </table>
                 
             </div>
             <select onClick={selectOrderStatus} className="select-status">

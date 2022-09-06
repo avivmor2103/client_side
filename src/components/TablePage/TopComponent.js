@@ -2,7 +2,7 @@ import React from "react";
 import './TablePage.css';
 import './TopComponent.css';
 import Cokies from "js-cookie";
-
+import { FaHome } from "react-icons/fa";
 
 const TopComponent = (props) => {
     let avgPerDiner =  parseInt(props.amount)/parseInt(props.diners);
@@ -10,7 +10,7 @@ const TopComponent = (props) => {
     return (
         <div className='top-container-div'>
             <div className="header-container">
-                <button onClick={props.onReturn}>Home</button>
+                <button onClick={props.onReturn}><FaHome/></button>
                 <div className="top-header-div">Table {props.numTable}</div>
             </div>
             <div className="top-labels">
