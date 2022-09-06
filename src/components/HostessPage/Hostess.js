@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Hostess.css";
 import CalcTable from "./CalcTable";
 
@@ -12,6 +13,34 @@ const Hostess = () => {
   const [hourSelected, setHourSelected] = useState("");
   const [isSearch, setIsSearch] = useState(false);
   const [orderDetailes, setOrderDetailes] = useState({});
+  const [tablesArray, setTablesArray] = useState([]);
+  const [reservationsArray, setReservationsArray] = useState([]);
+
+  useEffect( ()=>{
+    const urlTables = 'http://localhost:3001/api/tables/all_table';
+    const urlReservations = 'http://localhost:3001/api/reservations/all_reservations';
+
+    const getAllTables = async() =>{
+      try{
+        const response = await axios.get(urlTables);
+        setTablesArray(response.data);
+      }catch(e){
+        console.log(e);
+      }
+    }
+
+    const getAllReservations = async() =>{
+      try{
+        const response = await axios.get(urlReservations);
+        setReservationsArray(response.data);
+      }catch(e){
+        console.log(e);
+      }
+    }
+    getAllTables();
+    getAllReservations();
+  }, []);
+
 
   const seatsHandler = (event) => {
     event.preventDefault();
@@ -75,14 +104,6 @@ const Hostess = () => {
             </div>
             <div>
               <input className="form-select-hour" type="time" min="12:00" max="23:00" required onChange={hourHandler}/>
-              {/* <select className="form-select-hour" onChange={hourHandler}>
-                <option>Select Hour</option>
-                {hourArray.map((hour, index) => (
-                  <option key={index} value={hour}>
-                    {hour}
-                  </option>
-                ))}
-              </select> */}
             </div>
           </div>
           <div className="actions-container">
@@ -90,7 +111,7 @@ const Hostess = () => {
             <button type="button" className="form-btn-action" onClick={onClickHandler}>Cancle</button>
           </div>
         </form>
-        {isSearch && <CalcTable order={orderDetailes} />}
+        {isSearch && <CalcTable order={orderDetailes} tablesArray={tablesArray} reservationsArray={reservationsArray}/>}
       </div>
     </div>
   );

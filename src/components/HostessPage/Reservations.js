@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "./Hostess.css";
 import './Reservations.css';
-
+import axios from "axios";
 
 const Reservations = (props) => {
   const [firstName, setFirstName] = useState("");
@@ -37,6 +37,29 @@ const Reservations = (props) => {
 
   const SubmitHandler = (event) => {
     event.preventDefault();
+
+    const url = 'http://localhost:3001/api/reservations/create';
+    const body = {
+      numTable: props.numTable,
+      date: props.Date,
+      hour: props.hour,
+      numGuests: props.numberOfPeople,
+      firstName: firstName,
+      lastName: LastName,
+      phoneNumber: phoneNumber,
+      email:email
+    }
+
+    const createNewReservation= async()=>{
+      try{
+        const response = await axios.post(url, body);
+        return <div>{response.data}</div>
+      }catch(e){
+        console.log(e);
+      }
+    }
+
+    createNewReservation();
 
     emailjs
       .sendForm(
