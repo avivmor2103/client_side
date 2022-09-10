@@ -15,7 +15,7 @@ const FieldForm = (props) => {
         console.log(userId);
         let body = findBody(enteredField);
         console.log(body);
-        const url = 'http://localhost:3001/api/user/update/';
+        const url = process.env.REACT_APP_API_PATH + '/user/update/';
         const updateField = async () =>{ 
 
             try{

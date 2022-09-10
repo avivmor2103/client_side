@@ -27,7 +27,7 @@ const Dishes = (props) => {
 
     const hadleItemCategoryClick = (event) => {
         const categoryType = event.target.value; 
-        const url = 'http://localhost:3001/api/item/get_items_by_category/' + categoryType ;
+        const url = process.env.REACT_APP_API_PATH + '/item/get_items_by_category/' + categoryType ;
         const config={   
             headers:{
                 'Content-Type':'application/json'

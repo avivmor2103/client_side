@@ -29,7 +29,7 @@ const CollapsibleNavbar = (props)=> {
         const userEmail = Cookies.get("user");
 
         const requestBody = {email : userEmail};
-        const url = 'http://localhost:3001/api/user/logout';
+        const url = process.env.REACT_APP_API_PATH + '/user/logout';
         const config={   
             headers:{
                 'Content-Type':'application/json'
@@ -58,7 +58,7 @@ const CollapsibleNavbar = (props)=> {
     }
 
     const setNavLinks = () => {
-        const url = 'http://localhost:3001/api/user/all_users';
+        const url = process.env.REACT_APP_API_PATH + '/user/all_users';
         const config={   
             headers:{
                 'Content-Type':'application/json'

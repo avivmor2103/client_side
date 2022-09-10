@@ -6,6 +6,7 @@ import ButtomComponent from './ButtomComponent';
 import './TablePage.css';
 import axios from 'axios';
 import OrdersArrayContext from '../../store/OrdersArray';
+import Cokies from "js-cookie";
 
 
  
@@ -20,6 +21,7 @@ const TablePage = (props) => {
     const [orderItemsList, setOrderItemsList] = useState([]);
     const [itemNotes, setItemNotes] = useState('');
     const [itemQuantity, setItemQuantity] = useState('1');
+    const userEmail = Cokies.get("user");
 
     useEffect(()=>{
         let sum = 0 ;
@@ -69,7 +71,7 @@ const TablePage = (props) => {
             employeeId: "0",
             itemsList : orderItemsList
         }
-        const orderURL= 'http://localhost:3001/api/order/create';
+        const orderURL= process.env.REACT_APP_API_PATH + '/order/create';
         const createNewOrder = async () => {
             try{
                 const response = await axios.post(orderURL, newOrderBody);
@@ -91,7 +93,7 @@ const TablePage = (props) => {
             num_table: tableNum,
             items_array :itemsArray
         };
-        const url = 'http://localhost:3001/api/tables/add_item_to_table';
+        const url = process.env.REACT_APP_API_PATH + '/tables/add_item_to_table';
         const updateTableItems = async () =>{ 
             try{
                 const response = await axios.post(url, body);
@@ -114,7 +116,35 @@ const TablePage = (props) => {
     }
 
     const onCheckClickHandler = () =>{
-        return console.log('Check- Please');
+        const addHistoryOrder = async () =>{
+            const body = {
+                numTable : tableNum,
+                itemsList : itemsArray,
+                employee : userEmail,
+                totalPrice : totalAmount
+            }
+            const url = process.env.REACT_APP_API_PATH + '/OrdersHistory/create';
+            try{
+                const response = await axios.post(url, body);
+                console.log(response);
+            }catch(e){
+                console.log(e);
+            }
+
+        } 
+        addHistoryOrder();  
+        console.log('Check- Please');
+        const resetTable = async() =>{
+            const url = process.env.REACT_APP_API_PATH + '/tables/reset/' + tableNum; 
+            try{
+                const response = await axios.put(url);
+                console.log(response.data);
+            }catch(e){
+                console.log(e);
+            }
+        }
+        resetTable();
+        props.onReturnRestaurantPage();
     }
 
     const setQuantityHandler = (value)=> {

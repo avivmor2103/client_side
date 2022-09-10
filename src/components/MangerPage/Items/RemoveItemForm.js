@@ -9,7 +9,7 @@ const RemoveItemFrom = (props) => {
 
     const onDeleteClickHandler = (itemId)=>{
 
-        const url = 'http://localhost:3001/api/item/delete/'+ itemId; 
+        const url = process.env.REACT_APP_API_PATH + '/item/delete/'+ itemId; 
         //console.log(url);
         const deleteItem = async () =>{ 
 
@@ -33,7 +33,7 @@ const RemoveItemFrom = (props) => {
 
     const onChooseItemCategory = (event) => {
         const categoryType = event.target.value; 
-        const url = 'http://localhost:3001/api/item/get_items_by_category/' + categoryType ;
+        const url = process.env.REACT_APP_API_PATH + '/item/get_items_by_category/' + categoryType ;
         const config={   
             headers:{
                 'Content-Type':'application/json'

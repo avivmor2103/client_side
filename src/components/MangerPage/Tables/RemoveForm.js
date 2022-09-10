@@ -7,7 +7,7 @@ const RemoveForm = (props) => {
 
 
     const onClickDeleteHandler = (tableNum) =>{ 
-        const url = 'http://localhost:3001/api/tables/delete/'+ tableNum; 
+        const url = process.env.REACT_APP_API_PATH + '/tables/delete/'+ tableNum; 
     
         const deleteItem = async () =>{ 
 

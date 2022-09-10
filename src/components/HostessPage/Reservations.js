@@ -38,7 +38,7 @@ const Reservations = (props) => {
   const SubmitHandler = (event) => {
     event.preventDefault();
 
-    const url = 'http://localhost:3001/api/reservations/create';
+    const url = process.env.REACT_APP_API_PATH + '/reservations/create';
     const body = {
       numTable: props.numTable,
       date: props.Date,

@@ -45,7 +45,7 @@ const ItemForm = (props) => {
             item_quantity: enteredQuantity,
             item_description: enteredDescription
         }
-        const url ='http://localhost:3001/api/item/create';
+        const url =process.env.REACT_APP_API_PATH + '/item/create';
 
         const addNewItem = async () =>{ 
             try{

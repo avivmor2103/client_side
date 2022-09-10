@@ -10,7 +10,7 @@ const RemoveUser = (props) => {
     const startEditingClickHandler = ()=> {
         setIsEditting(true);
         
-        const url = 'http://localhost:3001/api/user/all_users/';
+        const url = process.env.REACT_APP_API_PATH + '/user/all_users/';
         const getAllUsers = async () =>{ 
             try{
                 const response = await axios.get(url);

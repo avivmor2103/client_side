@@ -8,7 +8,7 @@ const RemoveTable = (props) => {
 
     const startEditingClickHandler = ()=> {
         setIsEditting(true);
-        const url = 'http://localhost:3001/api/tables/all_table';
+        const url = process.env.REACT_APP_API_PATH + '/tables/all_table';
         const getAllTables = async ()=> {
             try{
                 const response = await axios.get(url);

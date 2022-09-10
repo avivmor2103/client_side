@@ -6,7 +6,7 @@ import UserButton from './UserButton';
 const RemoveUserForm = (props) => {
 
     const onDeleteClickHandler = (id) =>{ 
-        const url = 'http://localhost:3001/api/user/delete/'+ id; 
+        const url = process.env.REACT_APP_API_PATH + '/user/delete/'+ id; 
 
         const deleteUser = async () =>{ 
 

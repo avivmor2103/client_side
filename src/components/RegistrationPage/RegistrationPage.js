@@ -73,7 +73,7 @@ const RegistrationPage = (props) => {
       return;
     }
 
-    const url = 'http://localhost:3001/api/user/create';
+    const url = process.env.REACT_APP_API_PATH + '/user/create';
 
     const config={   
       headers:{

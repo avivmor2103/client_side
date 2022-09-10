@@ -10,7 +10,7 @@ const ProfilePage = (props) => {
     const [ userData, setUserData] = useState('');
         
     useEffect(()=>{
-        const url ='http://localhost:3001/api/user/all_users';
+        const url = process.env.REACT_APP_API_PATH + '/user/all_users';
         const config={   
             headers:{
                 'Content-Type':'application/json'

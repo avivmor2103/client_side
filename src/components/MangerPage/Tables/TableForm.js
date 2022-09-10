@@ -28,7 +28,7 @@ const TableForm = (props) => {
             erea :  enteredErea
         };
 
-        const url = 'http://localhost:3001/api/tables/create/';
+        const url = process.env.REACT_APP_API_PATH + '/tables/create/';
 
         const addNewTable = async () => {
             try{

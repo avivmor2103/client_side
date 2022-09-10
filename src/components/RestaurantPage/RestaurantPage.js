@@ -28,7 +28,7 @@ const RestaurantPage = (props) => {
 
         setState(newState);
         const ereaType = { erea : newState.erea };
-        const url = 'http://localhost:3001/api/tables/erea/' + ereaType.erea ;
+        const url = process.env.REACT_APP_API_PATH + '/tables/erea/' + ereaType.erea ;
         const config={   
             headers:{
                 'Content-Type':'application/json'
@@ -105,51 +105,3 @@ const RestaurantPage = (props) => {
 };
 
 export default RestaurantPage ;
-
-
-
-
-
-    //const ctx = React.useContext(AuthApi);
-
-
- // const logoutClickHandler = ()=> {
-    //     const userEmail = Cookies.get("user");
-    //     //console.log(userEmail) ;
-
-    //     const requestBody = {email : userEmail};
-    //     const url = 'http://localhost:3001/api/user/logout';
-    //     const config={   
-    //         headers:{
-    //             'Content-Type':'application/json'
-    //         }
-    //     }
-
-        
-    //     const logoutRequest = async () => {
-
-    //         try {
-    //             const body = JSON.stringify(requestBody);
-    //             const response = await axios.post( url, body , config );
-    //             if (response.status === 200) {
-    //                 ctx.setAuth(false);
-    //                 Cookies.remove("user");
-    
-    //                 const newState = {
-    //                     ...state,
-    //                     msg:'Loged-out succesfully'
-    //                 };
-    
-    //                 setState(newState);
-    //                 console.log("Disconnected from the system");
-                  
-    //             }else{
-    //                 const error = await response.text();
-    //                 setState({msg : error});
-    //             }
-    //         } catch(e) {
-    //             console.log(e);
-    //         }
-    //     }
-    //     logoutRequest();
-    // }

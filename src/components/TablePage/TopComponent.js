@@ -6,7 +6,7 @@ import { FaHome } from "react-icons/fa";
 
 const TopComponent = (props) => {
     let avgPerDiner =  parseInt(props.amount)/parseInt(props.diners);
-    const userEmail = Cokies.get("user")
+    const userEmail = Cokies.get("user");
     return (
         <div className='top-container-div'>
             <div className="header-container">

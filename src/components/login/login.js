@@ -18,8 +18,9 @@ const LoginPage = (props) => {
     const handleLoginClick = () => {
         const loginData = {
             email : state.email,
-            user_password : state.password };
-        const url = 'http://localhost:3001/api/user/login';
+            user_password : state.password 
+        };
+        const url = process.env.REACT_APP_API_PATH  + '/user/login';
         const config={   
             headers:{
                 'Content-Type':'application/json'

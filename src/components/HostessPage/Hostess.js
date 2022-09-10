@@ -17,8 +17,8 @@ const Hostess = () => {
   const [reservationsArray, setReservationsArray] = useState([]);
 
   useEffect( ()=>{
-    const urlTables = 'http://localhost:3001/api/tables/all_table';
-    const urlReservations = 'http://localhost:3001/api/reservations/all_reservations';
+    const urlTables = process.env.REACT_APP_API_PATH + '/tables/all_table';
+    const urlReservations = process.env.REACT_APP_API_PATH + '/reservations/all_reservations';
 
     const getAllTables = async() =>{
       try{

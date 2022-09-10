@@ -10,7 +10,7 @@ const OrderCardBeverages = (props) => {
 
     const selectOrderStatus = (event) => {
         setOrderStatus(event.target.value);
-        const url = 'http://localhost:3001/api/order/update_status';
+        const url = process.env.REACT_APP_API_PATH +'/order/update_status';
         const body = {
             newStatus : (event.target.value),
             orderNumber : props.orderData.numOrder
@@ -29,7 +29,7 @@ const OrderCardBeverages = (props) => {
     }
 
     const onDeleteOrderFromArray = () => {
-        const url = 'http://localhost:3001/api/order/delete/' + props.orderData.numOrder;
+        const url =process.env.REACT_APP_API_PATH + '/order/delete/' + props.orderData.numOrder;
 
         const deleteOrder = async () => { 
             try { 
