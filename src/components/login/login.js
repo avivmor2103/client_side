@@ -16,7 +16,9 @@ const LoginPage = (props) => {
 
 
     const handleLoginClick = () => {
-        const loginData = {email : state.email, password : state.password };
+        const loginData = {
+            email : state.email,
+            user_password : state.password };
         const url = 'http://localhost:3001/api/user/login';
         const config={   
             headers:{

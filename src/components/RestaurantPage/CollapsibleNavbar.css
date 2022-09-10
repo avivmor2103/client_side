@@ -67,24 +67,29 @@
   gap: 0px;
 }
 
-.attendance-link{
-  padding-right: 27px;
+.navigation .attendance-link{
+  margin-left: 20px;
 }
 
-.profile-link{
-  padding-right: 60px;
-}
-
-.manager-link{
-  padding-right: 45px;
-}
-
-.rest-link{
+.bar-link{
   padding-right: 30px;
 }
 
+.profile-link{
+  padding-right: 50px;
+}
+
+.manager-link{
+  padding-right: 30px;
+}
+
+.rest-link{
+  padding-right: 18px;
+}
+
 .link-icon-container .chef-page{
-  padding-right: 70px;
+  padding-right: 56px;
+
 }
 
 .navbar-option{

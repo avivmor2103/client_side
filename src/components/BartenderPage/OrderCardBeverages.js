@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React , {useState} from 'react';
-import './OrderCard.css';
+import './OrderCardBeverages.css';
 import { FaTrashAlt } from "react-icons/fa";
 
 
-const OrderCard = (props) => {
+const OrderCardBeverages = (props) => {
 
     const [orderStatus , setOrderStatus] = useState(props.orderData.status);
 
@@ -66,7 +66,7 @@ const OrderCard = (props) => {
                     </thead>
                     <tbody>
                         { props.orderData.itemsList.map((item, key) => {
-                        return ( item.category <= 4 ?
+                        return ( item.category > 4 ?
                             <tr key={key}>
                                 <td>{item.name}</td>
                                 <td>{item.notes}</td>
@@ -89,4 +89,4 @@ const OrderCard = (props) => {
     );
 }
  
-export default OrderCard;
+export default OrderCardBeverages;

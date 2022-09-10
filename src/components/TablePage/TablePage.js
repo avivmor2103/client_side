@@ -45,6 +45,7 @@ const TablePage = (props) => {
             name: newItem.name,
             notes: itemNotes,
             quantity: itemQuantity,
+            category: newItem.category
         }
 
         setOrderItemsList((prevItemsList)=>{

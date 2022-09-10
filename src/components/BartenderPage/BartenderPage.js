@@ -1,11 +1,10 @@
 import React , {useState, useRef , useEffect, useContext} from 'react';
-//import {default as axios} from 'axios';
-import './ChefPage.css';
-import OrderCard from './OrderCard';
+import './BartenderPage.css';
+import OrderCardBeverages from './OrderCardBeverages';
 import OrdersArrayContext from '../../store/OrdersArray';
 
 
-const ChefPage = (props) => {
+const BartenderPage = (props) => {
     const [ filteredOrdersArray, setFilteredOrdersArray] = useState([]);
     const [filter, setFilter] = useState('All Orders');
     const dragItem = useRef();
@@ -51,7 +50,7 @@ const ChefPage = (props) => {
     const checkIfEmptyDishes = (order) => {
         let isEmpty = true;
         order.itemsList.forEach((item) => { 
-            if( item.category <= 4)
+            if( item.category > 4)
             {
                 isEmpty=false;
             }
@@ -62,7 +61,7 @@ const ChefPage = (props) => {
     return (
         <div>
             <div className='title-container'>
-                Chef Page
+                Bar Page
             </div>
             <div className='select-container'>
                 <select className='filter-order-select' onClick={onFilterSelectClick}>
@@ -83,7 +82,7 @@ const ChefPage = (props) => {
                                                                 onDragEnd={drop}
                                                                 draggable
                                                                 >
-                                                                <OrderCard orderData={item} updateOrdersArray={updateOrdersArrayHandler}/>
+                                                                <OrderCardBeverages orderData={item} updateOrdersArray={updateOrdersArrayHandler}/>
                                                             </div>
                                                             :
                                                             (item.status === filter ? 
@@ -94,7 +93,7 @@ const ChefPage = (props) => {
                                                                     onDragEnd={drop}
                                                                     draggable
                                                                     >
-                                                                    <OrderCard orderData={item} updateOrdersArray={updateOrdersArrayHandler}/>
+                                                                    <OrderCardBeverages orderData={item} updateOrdersArray={updateOrdersArrayHandler}/>
                                                                 </div>
                                                             :
                                                             null )
@@ -106,4 +105,4 @@ const ChefPage = (props) => {
     );
 }
  
-export default ChefPage;
+export default BartenderPage;

@@ -54,11 +54,6 @@ const RegistrationPage = (props) => {
     setPassword(value);
   }
 
-  // const onChangePositionHandler= (event) => {
-  //   let value = event.target.value;
-  //   setPosition(value);
-  // }
-
   const onSubmitHandler = (event) => {
     const newUserDataRequest = {
       first_name : firstName,
@@ -86,23 +81,17 @@ const RegistrationPage = (props) => {
       }
     }
 
-    const sleep = (ms)=> {
-      return new Promise(resolve => setTimeout(resolve, ms));
-   }
-
     const registerRequest= async()=> {
       try{
-        const body = JSON.stringify(newUserDataRequest);
-        const response = await axios.post(url, body, config);
-        if(response === 200)
+        const response = await axios.post(url, newUserDataRequest,config);
+        if(response.status === 201)
         {
-          console.log(`Wellcome ${firstName}${ lastName}- Your registration has been successfully received.`);
-          setMsg(`Wellcome ${firstName}${ lastName}- Your registration has been successfully received.`);
-          await sleep(3000);
+          setMsg(response.data);
           props.onReturnToLoginPageClick();
-        }else{
-          const error = await response.text();
-          setMsg({msg : error});
+        }
+        if(response.data === 200){
+          console.log(response);
+          setMsg(response.data);
         }
       }catch(e){
         console.log(e);
@@ -117,7 +106,6 @@ const RegistrationPage = (props) => {
     {
       return;
     }else{
-      console.log(event.target.value);
       setPosition(event.target.value);
     }
   }
@@ -132,7 +120,7 @@ const RegistrationPage = (props) => {
             <input className="last-element" placeholder="Last Name" onChange={onChangeLastNameHandler}></input>
           </div>
           <div className="div-row">
-            <input className="email-element" placeholder="Email" onChange={onChangeEmailHandler}></input>
+            <input className="email-element" placeholder="Email" type="email" onChange={onChangeEmailHandler}></input>
             <input className="id-element" placeholder="ID" onChange={onChangeIdHandler}></input>
           </div>
           <div className="div-row">
@@ -141,7 +129,7 @@ const RegistrationPage = (props) => {
           </div>
           <div className="div-row">
             <input type="date" min="1990-01-01" max="2005-01-01" className="date-element" placeholder="Date of birth" onChange={onChangeDateHandler}></input>
-            <input className="password-element" type="password" placeholder="Password" onChange={onChangePasswordHandler}></input>
+            <input className="password-element" type="password" placeholder="Password" onChange={onChangePasswordHandler} autoComplete="new-password"></input>
           </div>
           <div className="div-row">
             {/* <input className="position-element" placeholder="Position" onChange={onChangePositionHandler}></input> */}

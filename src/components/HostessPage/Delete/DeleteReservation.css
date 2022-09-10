@@ -36,3 +36,7 @@ button {
     color: rgb(163, 117, 244);
     margin-bottom: 20px;
 }
+
+.form-input{
+  width: 50%;
+}

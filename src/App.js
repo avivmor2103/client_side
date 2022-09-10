@@ -16,6 +16,7 @@ import HostessPage from './components/HostessPage/HostessPage';
 import Hostess from './components/HostessPage/Hostess';
 import DeleteReservation from './components/HostessPage/Delete/DeleteReservation';
 import UpdateReservation from './components/HostessPage/Update/UpdateReservation';
+import BartenderPage from './components/BartenderPage/BartenderPage';
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -72,6 +73,7 @@ function App() {
                     <Route path="profile-page" element={ <ProfilePage />}/>
                     <Route path="chef-page" element={ <ChefPage/> }/>
                     <Route path='attendance-page' element={ <AttendancePage/>}/>
+                    <Route path='bartender-page' element={<BartenderPage/>}/>
                     <Route path='hostess-page/' element={ <HostessPage/>}>
                       <Route path='new-reservation' element={<Hostess/>}/>
                       <Route path='update-reservation' element={<UpdateReservation/>}/>

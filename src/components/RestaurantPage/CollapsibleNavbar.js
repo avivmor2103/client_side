@@ -6,6 +6,7 @@ import axios from "axios";
 import Hamburger from "../../UI/Hamburger";
 import Cookies from 'js-cookie';
 import {MdFlatware,MdManageAccounts,MdRestaurant,MdOutlineManageAccounts, MdLogout } from "react-icons/md";
+import { BiDrink } from "react-icons/bi";
 import { FaUserClock} from "react-icons/fa";
 
 
@@ -115,13 +116,22 @@ const CollapsibleNavbar = (props)=> {
                     <div className="link-icon-container">
                         <FaUserClock/>
                         <NavLink to='attendance-page' className={({ isActive }) =>
-                                ["nav-link","attendance-link", isActive ? "active" : null]
+                                ["nav-link", isActive ? "active" : null]
                                 .filter(Boolean)
                                 .join(" ")
                             }>Attendance</NavLink> 
                         {/* <div className="navbar-option" onClick={onAttendancePageClickHandler}>Attendance</div> */}
                     </div>
                     
+                    <div className="link-icon-container">
+                        <BiDrink/>
+                        <NavLink to='bartender-page' className={({ isActive }) =>
+                                ["nav-link","bar-link", isActive ? "active" : null]
+                                .filter(Boolean)
+                                .join(" ")
+                            }>Bartender</NavLink> 
+                    </div>
+
                     {isManeger ? 
                         <div className="link-icon-container">
                             <MdManageAccounts className="icon-profile"/>

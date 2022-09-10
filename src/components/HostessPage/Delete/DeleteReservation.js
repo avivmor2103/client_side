@@ -54,15 +54,6 @@ const DeleteReservation = () => {
   return (
     <div>
       <div>
-        <button
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          back
-        </button>
-      </div>
-      <div>
         <form className="form-reservation" onSubmit={SubmitHandler}>
           <div className="reservation-title">Delete Reservation</div>
 
@@ -94,6 +85,7 @@ const DeleteReservation = () => {
           </div>
           <div className="btn-container">
             <button type="submit">delete</button>
+            <button onClick={() => { navigate(-1);}}>Cancle</button>
           </div>
         </form>
       </div>
