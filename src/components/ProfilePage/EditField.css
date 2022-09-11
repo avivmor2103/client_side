@@ -1,5 +1,5 @@
 .new-field-container{
-    background-color: #a892ee;
+    background-color: #a77df7;
     padding: 1rem;
     margin: 2rem auto;
     width: 50rem;
@@ -13,8 +13,8 @@
     font: inherit;
     cursor: pointer;
     padding: 1rem 2rem;
-    border: 1px solid #40005d;
-    background-color: #40005d;
+    border: 1px solid #8f7df7;
+    background-color: #8f7df7;
     color: white;
     border-radius: 12px;
 
@@ -22,12 +22,12 @@
 
 .new-field-container button:hover,
 .new-field-container button:active {
-    background-color: #510674;
-    border-color: #510674;
+    background-color: #8f7df7;
+    border-color: #8f7df7;
 }
 
 .new-field-container button.alternative {
-    color: #220131;
+    color: #8f7df7;
     border-color: transparent;
     background-color: transparent;
 }
@@ -47,4 +47,5 @@
 .field-element-container button{
     margin-left: auto;
     padding: 5px;
+    color: #fff;
 }

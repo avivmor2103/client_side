@@ -127,8 +127,8 @@ const FieldForm = (props) => {
                 </div>
             </div>
             <div className='update-field_actions'>
-                <button type = "button" onClick={props.onCancelClick}>Cancel</button>
-                <button type= "submit">Update</button>
+                <button id="btn-cancle" type = "button" onClick={props.onCancelClick}>Cancel</button>
+                <button id="btn-update" type= "submit">Update</button>
             </div>
         </form>
     );

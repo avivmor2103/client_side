@@ -24,6 +24,13 @@
 .update-field_actions {
     text-align: right;
 }
+.update-field_actions #btn-cancle{
+  color: #fff;
+}
+
+.update-field_actions #btn-update{
+  color: #fff
+}
 .update-field_actions button {
   padding: 5px;
 }
