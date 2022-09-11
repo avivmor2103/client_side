@@ -30,7 +30,7 @@ const RemoveUser = (props) => {
         getAllUsers();
 
     }
-
+ 
     const onCancelClickHandler =()=>{
         setIsEditting(false);
     }

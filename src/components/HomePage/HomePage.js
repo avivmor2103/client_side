@@ -38,7 +38,7 @@ const HomePage = (props)=> {
                             <Link to="hostess-page" style={linkStyle}>Hostess</Link>
                         </div>
                         <div className="any-page-link-container">
-                            <Link to="restuarant-page" style={linkStyle}>Suppliers</Link>
+                            <Link to="suppliers-page" style={linkStyle}>Suppliers</Link>
                         </div>
                     </div>
                 </div>

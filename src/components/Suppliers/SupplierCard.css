@@ -1,0 +1,58 @@
+.supplier-card-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content:flex-start;
+    cursor: pointer;
+    outline-width: 1px;
+    outline-color: black;
+    outline-style: solid;
+    border-radius: 5px;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 5px;
+    box-shadow: 5px 10px #888888;
+    padding: 20px;
+}
+
+.supplier-detailes-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;   
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    gap: 30px;
+}
+
+.btn-container .inpt{
+    width: 100%;
+    outline-width: 1px;
+    outline-color: black;
+    outline-style: solid;
+    border-radius: 5px;
+    color: black;
+}
+
+.btn-container #btn{
+    width: 20%;
+    padding: 5px;
+    align-content: center;
+    outline-width: 1px;
+    outline-color: black;
+    outline-style: solid;
+    border-radius: 5px;
+    color: black;
+}
+
+.btn-container #btn:hover{
+    background-color: transparent;
+    color: #888888;
+}

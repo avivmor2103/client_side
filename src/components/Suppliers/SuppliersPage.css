@@ -1,0 +1,64 @@
+.header-container{
+    font-weight: 900;
+    font-size: x-large;
+}
+
+.page-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#filter-input-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 7px;
+    border-width: thin;
+}
+
+#filter-input-container #input-target{
+    width: 20%;
+    border-radius: 7px;
+    color: gray;
+    outline: auto;
+    outline-width: 1px;
+    outline-color: black;
+    outline-style: solid;
+}
+
+#filter-input-container #input-target:focus{
+    outline: none;
+}
+
+#btn-add{
+    padding: 5px;
+    width: 10%;
+    margin-top: 20px;
+    height: 10%;
+    border-radius: 7px;
+    color: gray;
+    outline: auto;
+    outline-width: 1px;
+    outline-color: black;
+    outline-style: solid;
+}
+
+#btn-add:hover {
+    background-color: transparent;
+    color: rgb(141, 222, 233);
+}
+
+.container{
+  
+}
+
+.suppliers-container{
+    display: flex ;
+    flex-wrap: wrap;
+    gap :5px;
+}
