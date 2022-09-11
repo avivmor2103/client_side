@@ -4,7 +4,7 @@ import Reservations from "./Reservations";
 import "./ShowTables.css";
 
 const ShowTables = (props) => {
-  console.log(props.filteredTablesArray);
+  console.log("hi fron show table" + props.filteredTablesArray);
   const [selectedTable, setSelectedTable] = useState("");
   const [isTableSelected, setIsTableSelected] = useState(false);
 
@@ -30,7 +30,8 @@ const ShowTables = (props) => {
                 onClick={showOrderReservation}
                 className="button-table"
               >
-                {item.num_table} {item.area}
+                {item.num_table}
+                {item.erea}
               </button>
             );
           })}

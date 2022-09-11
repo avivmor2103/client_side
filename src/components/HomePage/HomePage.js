@@ -28,7 +28,7 @@ const HomePage = (props)=> {
                 urlPathArray.length === 1 &&  urlPathArray[0].includes('home-page')?
                 <div className="homw-page-container">
                     <div className="title-home-container">
-                        <h2>Wellcom to ServEat</h2>
+                        <h2>Welcome to ServEat</h2>
                     </div>
                     <div className="link-container">
                         <div className="any-page-link-container">

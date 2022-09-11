@@ -1,62 +1,34 @@
 import React, { useState } from "react";
+import axios from "axios";
 //import { useNavigate } from "react-router-dom";
-
-const reservations = [
-  {
-    id: Math.random().toString(),
-    numTable: "table3",
-    numGuests: "3",
-    reservationDate: "2022-09-11",
-    reservationHour: "20:30",
-    firstName: "yarden",
-    lastName: "cohen",
-    phoneNumber: "0548158012",
-    clientEmail: "talaulr@gmail.com",
-  },
-  {
-    id: Math.random().toString(),
-    numTable: "table10",
-    numGuests: "6",
-    reservationDate: "2022-09-10",
-    reservationHour: "18:00",
-    firstName: "talia",
-    lastName: "rint",
-    phoneNumber: "0544252287",
-    clientEmail: "talaulr@gmail.com",
-  },
-  {
-    id: Math.random().toString(),
-    numTable: "table12",
-    numGuests: "3",
-    reservationDate: "2022-09-09",
-    reservationHour: "18:00",
-    firstName: "ofek",
-    lastName: "cohen",
-    phoneNumber: "0546891120",
-    clientEmail: "ofekcohen@gmail.com",
-  },
-];
 
 const ShowReservationToUpdate = (props) => {
   // const navigate = useNavigate();
 
   const Currentreservation = props.reservationFound;
+  const ReservationArray = props.reservationsArray;
+  const TablesArray = props.tablesArray;
 
-  const [firstName, setFirstName] = useState(
-    props.redervationDetailsToUpdate.firstName
-  );
-  const [lastName, setLastName] = useState(
-    props.redervationDetailsToUpdate.lastName
-  );
+  const [firstName, setFirstName] = useState(Currentreservation.firstName);
+  const [lastName, setLastName] = useState(Currentreservation.lastName);
   const [phoneNumber, setPhoneNumber] = useState(
-    props.redervationDetailsToUpdate.phoneNumber
+    Currentreservation.phoneNumber
   );
-  const [email, setEmail] = useState(props.reservationFound.clientEmail);
-  const [Date, setDate] = useState(props.reservationFound.reservationDate);
-  const [numGuests, setNumGuests] = useState(props.reservationFound.numGuests);
-  const [hour, setHour] = useState(props.reservationFound.reservationHour);
+  const [email, setEmail] = useState(Currentreservation.clientEmail);
+  const [date, setDate] = useState(Currentreservation.reservationDate);
+  const [numGuests, setNumGuests] = useState(Currentreservation.numGuests);
+  const [hour, setHour] = useState(Currentreservation.reservationHour);
   const [showMessage, isShowMessage] = useState(false);
-  let message = "";
+  const [message, setMessage] = useState("");
+
+  const updateReservation = async (Currentreservation) => {
+    const url = "http://localhost:3001/api/reservations/update";
+    try {
+      const response = await axios.put(url, Currentreservation);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const numGuestsHandler = (event) => {
     event.preventDefault();
@@ -93,82 +65,194 @@ const ShowReservationToUpdate = (props) => {
     setEmail(event.target.value);
   };
 
-  const checkIfvalid = (changedElem) => {
-    //      let indexReservations = 0 ;
-    //      let checkDate ;
-    //      let checkHour ;
-    //    for(indexReservations =0 ; indexReservations < reservations.length ; indexReservations++)
-    //    {
-    //        checkDate = Currentreservation.reservationDate.localeCompare(
-    //          reservations[indexReservations].reservationDate
-    //        );
-    //    }
+  const checkIfNumGuestIsvalid = (changedElem) => {
+    //if its num guests
+    let indexReservation = 0;
+    let tableElement = TablesArray.find(
+      (table) => table.num_table === Currentreservation.numTable
+    );
+    if (tableElement) {
+      console.log(tableElement);
+      let numSeat_table = parseInt(tableElement.num_seats);
+      let numSeat_selected = parseInt(changedElem);
+      if (numSeat_table >= numSeat_selected) {
+        Currentreservation.numGuests = changedElem;
+        return true;
+      }
+    } else {
+      let existTableArray = [];
+
+      TablesArray.forEach((tableEl) => {
+        let numSeat_table = parseInt(tableEl.num_seats);
+        let numSeat_selected = parseInt(changedElem);
+        if (numSeat_table >= numSeat_selected) {
+          existTableArray.push(tableEl);
+        }
+      });
+      if (existTableArray.length !== 0) {
+        let indexTableArray = 0;
+        for (
+          indexTableArray = 0;
+          indexTableArray < existTableArray.length;
+          indexTableArray++
+        ) {
+          for (
+            indexReservation = 0;
+            indexReservation < ReservationArray.length;
+            indexReservation++
+          ) {
+            let tableElem = existTableArray[indexTableArray];
+            if (
+              ReservationArray[indexReservation].numTable ===
+                tableElem.num_table &&
+              ReservationArray[indexReservation].reservationHour === hour &&
+              ReservationArray[indexReservation].reservationDate === date
+            ) {
+              existTableArray.splice(indexTableArray, 1);
+            }
+          }
+          if (indexTableArray === existTableArray.length - 1) {
+            //finish the reservation array so the table is not order - finish check!
+            let newNumTable = existTableArray[0].num_table;
+            Currentreservation.numGuests = changedElem;
+            Currentreservation.numTable = newNumTable;
+            return true;
+          }
+        }
+      } else {
+        let msg = "there is no table for " + changedElem + "seats";
+        setMessage(msg);
+      }
+    }
+    return false;
+  };
+
+  const checkSameTime = (reservationElem) => {
+    const reservationHour = reservationElem.hour;
+    const reservationDate = reservationElem.Date;
+    const orderHour = hour;
+    const orderDate = date;
+    let resultHour = orderHour.localeCompare(reservationHour);
+    if (resultHour === 0) {
+      let result = orderDate.localeCompare(reservationDate);
+      if (result === 0) return true;
+      else return false;
+    }
+    return false;
+  };
+
+  const checkIfDateHourvalid = (changedElem) => {
+    let indexReservation = 0;
+
+    for (
+      indexReservation = 0;
+      indexReservation < ReservationArray.length;
+      indexReservation++
+    ) {
+      let reservationElem = ReservationArray[indexReservation];
+      if (
+        reservationElem.numTable == Currentreservation.num_table &&
+        reservationElem.reservationDate == changedElem &&
+        reservationElem.reservationHour == hour
+      )
+        break;
+      if ((indexReservation = ReservationArray.length - 1)) {
+        Currentreservation.reservationDate = changedElem;
+        Currentreservation.reservationHour = hour;
+        return true;
+      }
+    }
+
+    TablesArray.forEach((table) => {
+      let tableWhichSeatNumIsFitting = [];
+      let numSeat_table = parseInt(table.num_seats);
+      let numGuests_selected = parseInt(numGuests);
+      if (numSeat_table >= numGuests_selected) {
+        tableWhichSeatNumIsFitting.push(table);
+      }
+
+      let isSameTableNumber;
+
+      tableWhichSeatNumIsFitting.forEach((tableEl) => {
+        ReservationArray.forEach((element) => {
+          isSameTableNumber = element.numTable.localeCompare(tableEl.num_table);
+          if (isSameTableNumber === 0) {
+            if (checkSameTime(element)) {
+              let index = tableWhichSeatNumIsFitting.indexOf(tableEl.num_table);
+              tableWhichSeatNumIsFitting.splice(index, 1);
+            }
+          }
+        });
+      });
+      if (tableWhichSeatNumIsFitting.length > 0) {
+        let newNumTable = tableWhichSeatNumIsFitting[0].num_table;
+        Currentreservation.numTable = newNumTable;
+        Currentreservation.reservationDate = changedElem;
+        Currentreservation.reservationHour = hour;
+        return true;
+      } else {
+        setMessage("There is no available table for these requests");
+        return false;
+      }
+    });
   };
 
   const updateReservationToDB = (DetailToUpdate) => {
-    let canUpdateReservation = true;
+    let enableUpdateReservation = true;
     let resNumGuest = DetailToUpdate.numGuests.localeCompare(
       Currentreservation.numGuests
     );
     let resDate = DetailToUpdate.reservationDate.localeCompare(
-      Currentreservation.numGuests
+      Currentreservation.reservationDate
     );
     let resHour = DetailToUpdate.reservationHour.localeCompare(
-      Currentreservation.numGuests
+      Currentreservation.reservationHour
     );
+
     let resFirstName = DetailToUpdate.firstName.localeCompare(
-      Currentreservation.numGuests
+      Currentreservation.firstName
     );
     let resLastName = DetailToUpdate.lastName.localeCompare(
-      Currentreservation.numGuests
+      Currentreservation.lastName
     );
     let resPhoneNumber = DetailToUpdate.phoneNumber.localeCompare(
-      Currentreservation.numGuests
+      Currentreservation.phoneNumber
     );
     let resEmail = DetailToUpdate.clientEmail.localeCompare(
-      Currentreservation.numGuests
+      Currentreservation.clientEmail
     );
 
     if (resNumGuest !== 0) {
-      if (!checkIfvalid(DetailToUpdate.numGuests)) canUpdateReservation = false;
+      if (!checkIfNumGuestIsvalid(DetailToUpdate.numGuests))
+        enableUpdateReservation = false;
     }
-    if (resDate !== 0) {
-      if (!checkIfvalid(DetailToUpdate.reservationDate))
-        canUpdateReservation = false;
+    if (resDate !== 0 || resHour !== 0) {
+      if (!checkIfDateHourvalid(DetailToUpdate.reservationDate))
+        enableUpdateReservation = false;
     }
-    if (resHour !== 0) {
-      if (!checkIfvalid(DetailToUpdate.reservationHour))
-        canUpdateReservation = false;
-    }
-    if (resFirstName !== 0) {
-      //just update without logic
 
+    if (resFirstName !== 0) {
       Currentreservation.firstName = DetailToUpdate.firstName;
-      if (!checkIfvalid(DetailToUpdate.firstName)) canUpdateReservation = false;
     }
     if (resLastName !== 0) {
-      //just update without logic
-      if (!checkIfvalid(DetailToUpdate.lastName)) canUpdateReservation = false;
+      Currentreservation.lastName = DetailToUpdate.lastName;
     }
     if (resPhoneNumber !== 0) {
-      //just update without logic
-      if (!checkIfvalid(DetailToUpdate.phoneNumber))
-        canUpdateReservation = false;
+      Currentreservation.phoneNumber = DetailToUpdate.phoneNumber;
     }
     if (resEmail !== 0) {
-      //just update without logic
-      if (!checkIfvalid(DetailToUpdate.clientEmail))
-        canUpdateReservation = false;
+      Currentreservation.clientEmail = DetailToUpdate.clientEmail;
     }
 
-    return canUpdateReservation;
+    return enableUpdateReservation;
   };
 
   const SubmitHandler = (event) => {
+    console.log("hello from submit show");
     event.preventDefault();
     let reservationChangesDetails = {
       numGuests: numGuests,
-      reservationDate: Date,
+      reservationDate: date,
       reservationHour: hour,
       firstName: firstName,
       lastName: lastName,
@@ -176,64 +260,17 @@ const ShowReservationToUpdate = (props) => {
       clientEmail: email,
     };
 
-    if (updateReservationToDB(reservationChangesDetails))
-      message = "the reservation updated succesfully";
-    else message = "Fail on updated reservation";
+    if (updateReservationToDB(reservationChangesDetails)) {
+      updateReservation(Currentreservation);
+      setMessage("the reservation updated succesfully");
+      console.log(Currentreservation);
+    }
+
     isShowMessage(true);
   };
 
-  //   const calcByPhoneNumber = (reservationElem) => {
-  //     const reservationPhoneNumber = reservationElem.phoneNumber;
-  //     let resultPhoneNumber = phoneNumber.localeCompare(reservationPhoneNumber);
-  //     if (resultPhoneNumber === 0) return true;
-  //     else return false;
-  //   };
-
-  //   const calcByFirstName = (reservationElem) => {
-  //     const reservationFirstName = reservationElem.firstName;
-  //     let resultFirstName = firstName.localeCompare(reservationFirstName);
-  //     if (resultFirstName === 0) return true;
-  //     else return false;
-  //   };
-
-  //   const calcByLastName = (reservationElem) => {
-  //     const reservationLastName = reservationElem.lastName;
-  //     let resultLastName = lastName.localeCompare(reservationLastName);
-  //     if (resultLastName === 0) return true;
-  //     else return false;
-  //   };
-
-  //   const isReservationExist = (event) => {
-  //     if (firstName && lastName) {
-  //       reservations.forEach((elem) => {
-  //         if (calcByFirstName(elem)) {
-  //           if (calcByLastName(elem)) {
-  //             alert("the reservation has been recognized! ");
-  //           } else alert("the reservation is not exist! ");
-  //         }
-  //       });
-  //     } else {
-  //       if (phoneNumber) {
-  //         reservations.forEach((elem) => {
-  //           if (calcByPhoneNumber(elem)) {
-  //             alert("the reservation has been recognized! ");
-  //           } else alert("the reservation is not exist! ");
-  //         });
-  //       }
-  //     }
-  //   };
-
-  //   isReservationExist();
-
   return (
     <div>
-      {/* <button
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
-        back
-      </button> */}
       <form className="form-reservation" onSubmit={SubmitHandler}>
         <div className="reservation-title">Edit Reservation</div>
 
@@ -241,17 +278,28 @@ const ShowReservationToUpdate = (props) => {
           <label className="form-label">No. guestes</label>
           <input
             type="string"
+            value={numGuests}
             onChange={numGuestsHandler}
             className="form-input"
           />
         </div>
         <div className="form-div">
           <label className="form-label">Date</label>
-          <input type="text" className="form-input" onChange={dateHandler} />
+          <input
+            type="text"
+            value={date}
+            className="form-input"
+            onChange={dateHandler}
+          />
         </div>
         <div className="form-div">
           <label className="form-label">Hour</label>
-          <input type="text" onChange={hourHandler} className="form-input" />
+          <input
+            type="text"
+            value={hour}
+            onChange={hourHandler}
+            className="form-input"
+          />
         </div>
         <div className="form-div">
           <label className="form-label">First Name</label>
@@ -282,7 +330,12 @@ const ShowReservationToUpdate = (props) => {
         </div>
         <div className="form-div">
           <label className="form-label">Email</label>
-          <input type="text" className="form-input" onChange={emailHandler} />
+          <input
+            type="text"
+            value={email}
+            className="form-input"
+            onChange={emailHandler}
+          />
         </div>
         <div className="btn-container">
           <button type="submit">update</button>
