@@ -67,7 +67,7 @@ const TableForm = (props) => {
                     </div> 
                     <div className='new-table_control'>
                         <label>Erea</label>
-                        <select onClick={onChooseEreaClick} className='new-table-select'>
+                        <select onChange={onChooseEreaClick} className='new-table-select'>
                             <option className='new-table-option' value='0'>Select</option>
                             <option className='new-table-option' value='1'>Indise</option>
                             <option className='new-table-option' value='2'>Bar</option>

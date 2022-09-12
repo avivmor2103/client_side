@@ -1,0 +1,17 @@
+#item-btn{
+    border-radius: 8px;
+    margin-left: 10px;
+    padding: 5px;
+    cursor: pointer;
+    position: static;
+    top: 40%;
+    left: 40%;
+    color: #2196F3;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+#item-btn:hover{
+    background-color: transparent;
+    color: #2196F3;
+}

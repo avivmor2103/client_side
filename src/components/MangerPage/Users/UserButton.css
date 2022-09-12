@@ -10,7 +10,9 @@
     border-radius: 5px;
     padding: 5px;
 }
-
-.user-delete-container button:hover{
+#btn-x{
+    outline: none;
+}
+.user-delete-container #btn-x:hover{
     color: red;
 }

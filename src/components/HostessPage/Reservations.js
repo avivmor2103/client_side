@@ -97,7 +97,7 @@ const Reservations = (props) => {
       <div>
         <div className="reservation-title">Reservation</div>
         <div className="form-div">
-          <label className="form-label"> Table Id</label>
+          <label className="form-label" placeholder="Table Id">Table Id</label>
           <input
             type="text"
             readOnly={true}
@@ -127,7 +127,7 @@ const Reservations = (props) => {
           />
         </div>
         <div className="form-div">
-          <label className="form-label">Start Hour</label>
+          <label className="form-label">Hour</label>
           <input
             type="text"
             readOnly={true}
@@ -176,11 +176,9 @@ const Reservations = (props) => {
             className="form-input"
           />
         </div>
-        <div className="btn-container">
-          <button type="button" onClick={Cancle}>
-            cancle
-          </button>
-          <button type="submit">submit</button>
+        <div id="btn-container">
+          <button type="button" onClick={Cancle}>Cancle</button>
+          <button type="submit">Submit</button>
         </div>
       </div>
     </form>

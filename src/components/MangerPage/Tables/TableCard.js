@@ -7,7 +7,7 @@ const TableCard = (props) => {
     return (
         <div className='card'>
             {props.data.num_table}
-            <button onClick={onClickHandler}>X</button>
+            <button id="btn" onClick={onClickHandler}>X</button>
         </div>
     );
 }

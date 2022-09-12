@@ -114,16 +114,6 @@ const CollapsibleNavbar = (props)=> {
                 isOpenHamburger &&
                 <div className="navigation">
                     <div className="link-icon-container">
-                        <FaUserClock/>
-                        <NavLink to='attendance-page' className={({ isActive }) =>
-                                ["nav-link", isActive ? "active" : null]
-                                .filter(Boolean)
-                                .join(" ")
-                            }>Attendance</NavLink> 
-                        {/* <div className="navbar-option" onClick={onAttendancePageClickHandler}>Attendance</div> */}
-                    </div>
-                    
-                    <div className="link-icon-container">
                         <BiDrink/>
                         <NavLink to='bartender-page' className={({ isActive }) =>
                                 ["nav-link","bar-link", isActive ? "active" : null]
@@ -189,3 +179,14 @@ export default CollapsibleNavbar;
 /* <Link to="maneger-page" style={linkStyle}>Maneger</Link>
                     <Link to="Profile-page" style={linkStyle}>Profile</Link>
                     <Link to="restuarant-page" style={linkStyle}>Restaurant</Link> */
+
+/*
+{/* <div className="link-icon-container">
+                        <FaUserClock/>
+                        <NavLink to='attendance-page' className={({ isActive }) =>
+                                ["nav-link", isActive ? "active" : null]
+                                .filter(Boolean)
+                                .join(" ")
+                            }>Attendance</NavLink> 
+                        {/* <div className="navbar-option" onClick={onAttendancePageClickHandler}>Attendance</div> */
+                

@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import ShowReservationToUpdate from "./ShowReservationToUpdate";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import './UpdateReservation.css';
 
 const UpdateReservation = () => {
   const navigate = useNavigate();
@@ -11,13 +12,10 @@ const UpdateReservation = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [numGuests, setNumGuests] = useState("");
   const [hour, setHour] = useState("");
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isNotExist, setIsNotExist] = useState(false);
-  const [redervationDetailsToUpdate, setRedervationDetailsToUpdate] = useState(
-    {}
-  );
+
   const [reservationsArray, setReservationsArray] = useState([]);
   const [reservationFound, setReservationFound] = useState({});
   const [tablesArray, setTablesArray] = useState([]);
@@ -215,16 +213,11 @@ const UpdateReservation = () => {
           <label className="form-label">hour</label>
           <input type="text" className="form-input" onChange={hourHandler} />
         </div>
-        <div className="btn-container">
-          <button type="submit">Search</button>
+        <div id="btn-container">
+          <button onClick={() => { navigate(-1); }} className="btn">Cancle</button>
+          <button type="submit" className="btn">Search</button>
         </div>
-        <button
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          cancle
-        </button>
+       
       </form>
       {isSearchClicked && (
         <ShowReservationToUpdate
@@ -232,16 +225,6 @@ const UpdateReservation = () => {
           reservationsArray={reservationsArray}
           tablesArray={tablesArray}
         />
-        // <Routes>
-        //   <Route
-        //     path="/updateReservation/*"
-        //     element={
-        //       <ShowReservationToUpdate
-        //         redervationDetailsToUpdate={redervationDetailsToUpdate}
-        //       />
-        //     }
-        //   />
-        // </Routes>
       )}
       {isNotExist && !isSearchClicked && (
         <div>the reservation is not exist</div>

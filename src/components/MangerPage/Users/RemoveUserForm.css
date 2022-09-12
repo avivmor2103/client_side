@@ -11,15 +11,7 @@
     margin-bottom: 0.5rem;
     display: block;
   }
-  
-/* .cancel-user_control input {
-    font: inherit;
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    width: 20rem;
-    max-width: 100%;
-} */
+
   
 .cancel-user_actions {
     text-align: right;
@@ -35,8 +27,10 @@ button:hover {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .remove-form-container button{  

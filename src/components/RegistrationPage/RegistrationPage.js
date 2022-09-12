@@ -55,7 +55,6 @@ const RegistrationPage = (props) => {
   }
 
   const onSubmitHandler = (event) => {
-    event.preventdefault();
     const newUserDataRequest = {
       first_name : firstName,
       last_name : lastName,
@@ -134,7 +133,7 @@ const RegistrationPage = (props) => {
           </div>
           <div className="div-row">
             {/* <input className="position-element" placeholder="Position" onChange={onChangePositionHandler}></input> */}
-            <select className="position-element" onClick={selectOptionPositionHandler}>
+            <select className="position-element" onChange={selectOptionPositionHandler}>
               <option className='selection-option'>Select</option>
               <option className='selection-option'>Manager</option>
               <option className='selection-option'>Chef</option>

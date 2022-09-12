@@ -34,7 +34,7 @@ const RemoveUserForm = (props) => {
                 <div className='cancel-user_control'>
                     <label>Delete User</label>
                 </div>
-            </div>
+            </div> 
             <div className='users-container'>
                 { props.users.map( (user, index) =>{ return <UserButton key={index} data={user} onDeleteClick={onDeleteClickHandler}/>}) }
             </div>

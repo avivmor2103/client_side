@@ -121,15 +121,9 @@ const DeleteReservation = () => {
             <label className="form-label">hour</label>
             <input type="text" className="form-input" onChange={hourHandler} />
           </div>
-          <div className="btn-container">
-            <button type="submit">delete</button>
-            <button
-              onClick={() => {
-                navigate(-1);
-              }}
-            >
-              back
-            </button>
+          <div id="btn-container">
+            <button type="submit" className="btn">delete</button>
+            <button onClick={() =>{ navigate(-1); }} className="btn">Cancle</button>
           </div>
         </form>
       </div>

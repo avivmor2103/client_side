@@ -21,8 +21,9 @@
     outline-style: solid;
 }
 
-.card button{
+.card #btn{
     padding: 3px;
+    outline: none;
 }
 
 .card button:hover{

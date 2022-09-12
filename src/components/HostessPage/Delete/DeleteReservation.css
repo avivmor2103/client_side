@@ -13,20 +13,17 @@
   outline: auto rgb(162, 140, 227);
   padding: 50px;
   border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content:left;
 }
 
-.btn-container {
-  gap: 10px;
-}
-
-button {
-  padding: 15px;
-  margin-right: 10px;
-  border-radius: 12px;
-  color: rgb(163, 117, 244);
-  margin-right: 10px;
-  background-color: transparent;
-  outline: auto rgb(162, 140, 227);
+#btn-container {
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .reservation-title{
@@ -38,5 +35,14 @@ button {
 }
 
 .form-input{
-  width: 50%;
+  width: 60%;
+}
+
+.form-input:hover {
+  background-color: transparent;
+}
+
+
+.btn:hover{
+  color: #fff;
 }

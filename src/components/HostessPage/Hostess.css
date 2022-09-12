@@ -49,13 +49,17 @@
 
 .form-select-guests{
   font-weight: 300;
+  font-size: medium;
+  text-align: center;
   border-radius: 12px;
-  padding: 15px;
+  padding: 17px 1px 19px 1px;
+  border: 30px;
   font-size: 15px;
   color: rgb(163, 117, 244);
   outline: auto rgb(162, 140, 227);
   width: 100%;
   cursor: pointer;
+  border-bottom: 10px;
 }
 
 .form-input-date{

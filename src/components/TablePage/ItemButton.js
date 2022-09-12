@@ -1,5 +1,5 @@
 import React from "react";
-
+import './ItemButton.css';
 const ItemButton = props => { 
 
     const handleChoosenItem = (event) => {
@@ -14,7 +14,7 @@ const ItemButton = props => {
     };
 
     return (
-        <button onClick={handleChoosenItem}>{props.value.item_name}</button>
+        <button id="item-btn" onClick={handleChoosenItem}>{props.value.item_name}</button>
     )
 }
 

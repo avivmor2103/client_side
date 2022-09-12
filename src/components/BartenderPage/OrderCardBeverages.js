@@ -78,7 +78,7 @@ const OrderCardBeverages = (props) => {
                 </table>
                 
             </div>
-            <select onClick={selectOrderStatus} className="select-status">
+            <select onChange={selectOrderStatus} className="select-status">
                     <option>{orderStatus}</option>
                     <option>Pre preparation</option>
                     <option>In preparation</option>

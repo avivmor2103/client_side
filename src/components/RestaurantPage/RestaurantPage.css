@@ -66,17 +66,17 @@
     flex-direction: row;
     justify-content: center;
     gap: 3px;
-    color: white;
+
 }
 
 .button-section .btutons-container button:hover{
-    color: white;
+    color: black;
 }
 
 button {
     border-radius: 8px;
     margin-left: 10px;
-    padding: 20px;
+    padding: 5px;
     border: none;
     background-color: #AFB4FF;
 }

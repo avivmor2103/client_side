@@ -55,17 +55,14 @@ const Dishes = (props) => {
         <div className='middle-div-container'>
             <div className='dish-container'>
                 <div className="middle-left-title">Dishes</div>
-                <button className='top-category' value="Food" onClick= {handleTypeItemClick} disabled={enable}>Food</button>
-                <button className='top-category' value="Drinks" onClick= {handleTypeItemClick} disabled={enable}>Drinks</button>
+                <button className='foodCategoryButtons' value="1" onClick= {hadleItemCategoryClick} >STARTERS</button>
+                <button className='foodCategoryButtons' value="2" onClick= {hadleItemCategoryClick} >INTERMEDIATE</button>
+                <button className='foodCategoryButtons' value="3" onClick= {hadleItemCategoryClick} >MAIN</button>
+                <button className='foodCategoryButtons' value="4" onClick= {hadleItemCategoryClick} >DESSERT</button>
 
-                <button className='foodCategoryButtons' value="1" onClick= {hadleItemCategoryClick} disabled={ isClicked === 1? false : true } >STARTERS</button>
-                <button className='foodCategoryButtons' value="2" onClick= {hadleItemCategoryClick} disabled={ isClicked === 1? false : true } >INTERMEDIATE</button>
-                <button className='foodCategoryButtons' value="3" onClick= {hadleItemCategoryClick} disabled={ isClicked === 1? false : true } >MAIN</button>
-                <button className='foodCategoryButtons' value="4" onClick= {hadleItemCategoryClick} disabled={ isClicked === 1? false : true } >DESSERT</button>
-
-                <button className='drinksCategoryButtons' value="5" onClick= {hadleItemCategoryClick} disabled={ isClicked === 2? false: true}>SOFT</button>
-                <button className='drinksCategoryButtons' value="6" onClick= {hadleItemCategoryClick} disabled={ isClicked === 2? false : true } >ALCOHOL</button>
-                <button className='drinksCategoryButtons' value="7" onClick= {hadleItemCategoryClick} disabled={ isClicked === 2? false : true } >HOT</button>
+                <button className='foodCategoryButtons' value="5" onClick= {hadleItemCategoryClick}>SOFT</button>
+                <button className='foodCategoryButtons' value="6" onClick= {hadleItemCategoryClick}>ALCOHOL</button>
+                <button className='foodCategoryButtons' value="7" onClick= {hadleItemCategoryClick}>HOT</button>
             </div>
             <div className="items-container"> 
                 <div className="middle-left-title">Items List</div>

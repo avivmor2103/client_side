@@ -78,7 +78,7 @@ const ItemForm = (props) => {
                 </div>
                 <div className='new-item_control'>
                     <label>Category</label>
-                    <select className='select-section' onClick={categoryChangeHandler}>
+                    <select className='select-section' onChange={categoryChangeHandler}>
                         <option className='selection-option' value="0">Select</option>
                         <option className='selection-option' value="1">Starters</option>
                         <option className='selection-option' value="2">Appetizers</option>

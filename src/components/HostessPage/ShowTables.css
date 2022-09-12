@@ -2,6 +2,7 @@
   padding: 20px;
   border-radius: 12px;
   gap: 15px;
+  width: 100%;
 }
 
 .show-tables-container .buttons-table-container {
@@ -9,6 +10,7 @@
   border-radius: 12px;
   gap: 30px;
   flex-wrap: wrap;
+  width:100%;
 }
 
 .buttons-table-container button{
@@ -18,6 +20,7 @@
   font-weight: 300;
   color: rgb(163, 117, 244);
   margin-right: 10px;
+  margin-bottom: 10px;
   background-color: transparent;
   outline:auto rgb(162, 140, 227);
 }
@@ -33,6 +36,7 @@
   color: #A66CFF;
 }
 
-/* .item{
-  width: 50%;
-} */
+.item{
+  width: 100%;
+  position: static;
+}

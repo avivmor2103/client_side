@@ -65,7 +65,7 @@ const ChefPage = (props) => {
                 Chef Page
             </div>
             <div className='select-container'>
-                <select className='filter-order-select' onClick={onFilterSelectClick}>
+                <select className='filter-order-select' onChange={onFilterSelectClick}>
                     <option value="" disabled>Select</option>   
                     <option className='filter-option'>All Orders</option>
                     <option>Pre preparation</option>

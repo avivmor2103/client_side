@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     background-color: #AFB4FF;
-    display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -12,10 +11,12 @@
     box-shadow: 0.5px 1px rgba(0, 0, 0, 0.44);
     z-index: 1;
     gap: 4px;
+    padding-left: 20px;
+    cursor: pointer;
+    
 }
 .navigation{
-  padding: 5px 8px;
-  cursor: pointer;
+  
 }
 .navbar-option:hover {
     color: azure;
@@ -67,16 +68,17 @@
   gap: 0px;
 }
 
+
 .navigation .attendance-link{
   margin-left: 20px;
 }
 
 .bar-link{
-  padding-right: 30px;
+  padding-right: 24px;
 }
 
 .profile-link{
-  padding-right: 50px;
+  padding-right: 45px;
 }
 
 .manager-link{
@@ -103,4 +105,5 @@
   justify-content: center;
   align-items: center;
   gap:7px;
+  padding-left: 22px;
 }

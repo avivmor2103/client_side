@@ -8,27 +8,35 @@
   margin-left: 10%;
 } 
 
-.middle-div-container button{
-  border-radius: 8px;
-  margin-left: 10px;
-  padding: 7px;
-  background-color: #d1d4ff;
-  cursor: pointer;
-}
-
-
-.middle-div-container button:hover{
-  background-color: transparent;
-  color: #b0b4eb;
-  border-color: transparent;
-}
-
 .dish-container{
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 5px;
 }
+
+.middle-div-container .dish-container .foodCategoryButtons{
+  border-radius: 8px;
+  margin-left: 10px;
+  padding: 5px;
+  cursor: pointer;
+  position:static;
+  top: 40%;
+  left: 40%;
+  color: #2196F3;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+/* 
+.middle-div-container .dish-container .foodCategoryButtons:hover{
+  background-color: transparent;
+  color: #b0b4eb;
+  border-color: transparent;
+  padding: 5px;
+} */
+
+
 
 .items-container{
   display: flex;

@@ -55,7 +55,7 @@ const RemoveItemFrom = (props) => {
         <div className='top-div-container'>
             <div className='select-item-category-container'>
                 <h5 className="section-title" >Select Item Category</h5>
-                <select className='select-section' onClick={onChooseItemCategory}>
+                <select className='select-section' onChange={onChooseItemCategory}>
                     <option className='selection-option' value="0">Select</option>
                     <option className='selection-option' value="1">Starters</option>
                     <option className='selection-option' value="2">Appetizers</option>
