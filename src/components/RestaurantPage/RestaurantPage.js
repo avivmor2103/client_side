@@ -18,6 +18,7 @@ const RestaurantPage = (props) => {
     const selectInputRef = useRef();
 
     const chooseEreaClick = event => {
+        event.preventdefault();
         const value = event.target.value;
         if(value === '0')
             return;
