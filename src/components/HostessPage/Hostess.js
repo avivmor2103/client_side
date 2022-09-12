@@ -100,10 +100,11 @@ const Hostess = () => {
                 min="2022-01-01"
                 max="2023-01-01"
                 onChange={dateChangeHandler}
+                placeholder="Date"
               />
             </div>
             <div>
-              <input className="form-select-hour" type="time" min="12:00" max="23:00" required onChange={hourHandler}/>
+              <input className="form-select-hour" type="time" min="12:00" max="23:00" required onChange={hourHandler} placeholder="Time"/>
             </div>
           </div>
           <div className="actions-container">
