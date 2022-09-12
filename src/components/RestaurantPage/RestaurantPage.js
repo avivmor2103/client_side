@@ -84,7 +84,7 @@ const RestaurantPage = (props) => {
                 <>
                     <div className='main-container'>
                         <h3 className="section-title">Select Erea</h3>
-                        <select ref={selectInputRef} className='select-section' onClick={chooseEreaClick}>
+                        <select ref={selectInputRef} className='select-section' onChange={chooseEreaClick}>
                             <option className='selection-option' value="0">Select</option>
                             <option className='selection-option' value="1">Floor</option>
                             <option className='selection-option' value="2">Bar</option>
