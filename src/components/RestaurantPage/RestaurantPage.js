@@ -18,16 +18,19 @@ const RestaurantPage = (props) => {
     const selectInputRef = useRef();
 
     const chooseEreaClick = event => {
-        event.preventdefault();
+       
         const value = event.target.value;
         if(value === '0')
             return;
+
         const newState = {
             ...state,
             erea : value, tablesArray : []
         };
 
-        setState(newState);
+        setState((prevState)=> {
+            return {...prevState, erea: value, tablesArray: []}
+        });
         const ereaType = { erea : newState.erea };
         const url = process.env.REACT_APP_API_PATH + '/tables/erea/' + ereaType.erea ;
         const config={   
@@ -45,7 +48,9 @@ const RestaurantPage = (props) => {
                         return parseInt(a.num_table) - parseInt(b.num_table);
                     })
                 };
-                setState(newState);
+                setState((prevState)=>{
+                    return {...prevState, tablesArray: response.data};
+                });
             }catch(e){
                 console.log(e);
             }

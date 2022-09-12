@@ -55,6 +55,7 @@ const RegistrationPage = (props) => {
   }
 
   const onSubmitHandler = (event) => {
+    event.preventdefault();
     const newUserDataRequest = {
       first_name : firstName,
       last_name : lastName,
